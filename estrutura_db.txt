@@ -1,0 +1,36 @@
+tartaruga:
+	- id: int
+	- nome: string
+	- sexo: string
+	- especie: string
+	- data de instalação modulo: date_time
+	- aniversário estimada: date_time
+	- id_pesquisador: int
+	- descricão: text
+
+dados_coletados:
+	- id da tartaruga
+	- temperatura
+	- profundidade
+	- luz: float
+	- latitude: float
+	- longitude: float
+	- data: date_time
+
+
+usuários:
+	- nome string
+	- email: string
+	- senha: hash
+	- id da foto: int
+	- aniversário: date_time 
+	- telefone: int
+	- profissão: string
+	- instituição: instituição
+	- descrição: text
+
+mergulho:
+	- id da tartaruga
+        - temperatura
+        - profundidade
+        - luz: float
