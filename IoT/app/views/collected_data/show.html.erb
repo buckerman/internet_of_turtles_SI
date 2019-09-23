@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Turtle:</strong>
+  <%= @collected_datum.turtle %>
+</p>
+
+<p>
+  <strong>Temperature:</strong>
+  <%= @collected_datum.temperature %>
+</p>
+
+<p>
+  <strong>Deep:</strong>
+  <%= @collected_datum.deep %>
+</p>
+
+<p>
+  <strong>Light:</strong>
+  <%= @collected_datum.light %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @collected_datum.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @collected_datum.longitude %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @collected_datum.date %>
+</p>
+
+<%= link_to 'Edit', edit_collected_datum_path(@collected_datum) %> |
+<%= link_to 'Back', collected_data_path %>
