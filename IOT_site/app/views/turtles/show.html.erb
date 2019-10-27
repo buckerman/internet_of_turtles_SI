@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Turtle:</strong>
+  <%= @turtle.turtle_id %>
+</p>
+
+<p>
+  <strong>Integer:</strong>
+  <%= @turtle.integer %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @turtle.name %>
+</p>
+
+<p>
+  <strong>Sex:</strong>
+  <%= @turtle.sex %>
+</p>
+
+<p>
+  <strong>Species:</strong>
+  <%= @turtle.species %>
+</p>
+
+<p>
+  <strong>Fixation date:</strong>
+  <%= @turtle.fixation_date %>
+</p>
+
+<p>
+  <strong>Birthday:</strong>
+  <%= @turtle.birthday %>
+</p>
+
+<p>
+  <strong>Researcher:</strong>
+  <%= @turtle.researcher_id %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @turtle.description %>
+</p>
+
+<%= link_to 'Edit', edit_turtle_path(@turtle) %> |
+<%= link_to 'Back', turtles_path %>
