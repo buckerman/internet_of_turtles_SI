@@ -40,8 +40,6 @@
                 }
             }
             console.log(chart_data);
-            console.log(Object.keys(chart_data));
-
             draw_donut(div_name, chart_data);
         };
     };
@@ -63,7 +61,7 @@
         // get the data
         // X axis: scale and draw:
         var x = d3.scaleLinear()
-            .domain([0, d3.max(data, function (d) { return +d })])
+            .domain([0, d3.max(data, function (d) { return +d })+1])
             .range([0, width]);
 
         svg.append("g")
@@ -105,8 +103,7 @@
         var width = div_dims["width"]
         height = div_dims["height"]
         margin = 40
-        
-        console.log(d3.select(reference).node().getBoundingClientRect())
+
 
         // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
         var radius = Math.min(width, height) / 2 - margin
@@ -119,8 +116,6 @@
             .append("g")
             .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-        // Create dummy data
-        // var data = {a: 9, b: 20, c:30, d:8, e:12, f:3, g:7, h:14}
 
         // set the color scale
         var color = d3.scaleOrdinal()

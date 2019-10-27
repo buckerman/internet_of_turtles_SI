@@ -1,12 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<% if current_user %>
+
 <h1>Turtles</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Turtle</th>
-      <th>Integer</th>
+
       <th>Name</th>
       <th>Sex</th>
       <th>Species</th>
@@ -20,9 +21,8 @@
 
   <tbody>
     <% @turtles.each do |turtle| %>
+      
       <tr>
-        <td><%= turtle.turtle_id %></td>
-        <td><%= turtle.integer %></td>
         <td><%= turtle.name %></td>
         <td><%= turtle.sex %></td>
         <td><%= turtle.species %></td>
@@ -30,10 +30,14 @@
         <td><%= turtle.birthday %></td>
         <td><%= turtle.researcher_id %></td>
         <td><%= turtle.description %></td>
+        <% if turtle.researcher_id == current_user.id || super_user %>
         <td><%= link_to 'Show', turtle %></td>
         <td><%= link_to 'Edit', edit_turtle_path(turtle) %></td>
         <td><%= link_to 'Destroy', turtle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
+    
+
     <% end %>
   </tbody>
 </table>
@@ -41,3 +45,9 @@
 <br>
 
 <%= link_to 'New Turtle', new_turtle_path %>
+
+<% else %>
+<script type="text/javascript">
+  window.location = "<%= home_path %>";
+</script>
+<% end %>

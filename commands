@@ -1,3 +1,3 @@
-rails generate scaffold Turtle id:integer name:string sex:string species:string fixation_date:timestamp birthday:timestamp researcher_id:integer description:text
+rails generate scaffold Turtle turtle_id:integer name:string sex:string species:string fixation_date:timestamp birthday:timestamp researcher_id:integer description:text
 rails generate scaffold User user_id:integer name:string email:string password:digest sex:string photo_id:integer registration_date:date description:text occupation:string institution:string
 rails db:migrate

@@ -25,8 +25,15 @@ class TurtlesController < ApplicationController
   # POST /turtles.json
   def create
     @turtle = Turtle.new(turtle_params)
-
+    
+    if super_user
+      
+    else
+      @turtle.researcher_id = current_user.id
+      # @turtle.researcher = User.find(current_user.id)
+    end
     respond_to do |format|
+      
       if @turtle.save
         format.html { redirect_to @turtle, notice: 'Turtle was successfully created.' }
         format.json { render :show, status: :created, location: @turtle }

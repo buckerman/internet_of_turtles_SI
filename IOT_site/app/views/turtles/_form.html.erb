@@ -11,15 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :turtle_id %>
-    <%= form.number_field :turtle_id %>
-  </div>
 
-  <div class="field">
-    <%= form.label :integer %>
-    <%= form.text_field :integer %>
-  </div>
 
   <div class="field">
     <%= form.label :name %>
@@ -28,12 +20,12 @@
 
   <div class="field">
     <%= form.label :sex %>
-    <%= form.text_field :sex %>
+    <%= form.select :sex, ['Male', 'Female'],include_blank: true %>
   </div>
 
   <div class="field">
     <%= form.label :species %>
-    <%= form.text_field :species %>
+    <%= form.select :species, ['Loggerhead', 'Green turtle', 'Leatherback', 'Hawksbill', 'Kemp\'s ridley', 'Olive ridley', 'Flatback'],include_blank: true %>
   </div>
 
   <div class="field">
@@ -46,11 +38,12 @@
     <%= form.datetime_select :birthday %>
   </div>
 
+  <% if super_user %>
   <div class="field">
     <%= form.label :researcher_id %>
-    <%= form.number_field :researcher_id %>
+    <%= form.number_field :researcher_id, value: super_user.id %>
   </div>
-
+  <% end %>
   <div class="field">
     <%= form.label :description %>
     <%= form.text_area :description %>

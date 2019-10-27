@@ -1,28 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>IOTSite</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>IOTSite</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
-    
-    <%= link_to "Home", home_path %> <%= link_to "Analysis", analysis_chart_index_path %> </br>
-    <div style="position: fixed; right:0px; top:0px">
-        <% if current_user %>
-        Logged in as <%= current_user.email %>.
-        <%= link_to "Log Out", logout_path %>
-      <% else %>
-        <%= link_to "Sign Up", signup_path %> or 
-        <%= link_to "Log In", login_path %>
-      <% end %>
-  
-    </div>
-    <%= yield %>
-    footer
-  </body>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+  <div style="position: fixed; right:0px; top:0px">
+    <% if current_user %>
+    Logged in as <%= current_user.email %> | 
+    <%= link_to "Profile", edit_user_path(current_user) %> |
+
+    <%= link_to "Log Out", logout_path %>
+    <% else %>
+    <%= link_to "Sign Up", signup_path %> or
+    <%= link_to "Log In", login_path %>
+    <% end %>
+
+  </div>
+  <div>
+
+    <span> <%= link_to "Home", home_path %> </span> |
+    <span> <%= link_to "Analysis", analysis_chart_index_path %> </span> 
+    <% if current_user %>
+    <% if super_user %>
+    <span> | <%= link_to "Edit Users", users_path %> </span> |
+    <% end %>
+    <span> <%= link_to "My Turtles", turtles_path %> </span>
+    <% end %>
+
+
+    </br>
+  </div>
+  <%= yield %>
+  footer
+</body>
+
 </html>
