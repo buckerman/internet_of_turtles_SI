@@ -9,5 +9,5 @@ class Turtle < ApplicationRecord
         @researcher = @current_user
     end
     belongs_to :user
-    has_many :data
+    has_many :turtle_data
 end
