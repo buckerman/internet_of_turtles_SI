@@ -21,10 +21,7 @@ class UsersTest < ApplicationSystemTestCase
     fill_in "Occupation", with: @user.occupation
     fill_in "Password", with: 'secret'
     fill_in "Password confirmation", with: 'secret'
-    fill_in "Photo", with: @user.photo_id
-    fill_in "Registration date", with: @user.registration_date
     fill_in "Sex", with: @user.sex
-    fill_in "User", with: @user.user_id
     click_on "Create User"
 
     assert_text "User was successfully created"
@@ -42,10 +39,7 @@ class UsersTest < ApplicationSystemTestCase
     fill_in "Occupation", with: @user.occupation
     fill_in "Password", with: 'secret'
     fill_in "Password confirmation", with: 'secret'
-    fill_in "Photo", with: @user.photo_id
-    fill_in "Registration date", with: @user.registration_date
     fill_in "Sex", with: @user.sex
-    fill_in "User", with: @user.user_id
     click_on "Update User"
 
     assert_text "User was successfully updated"

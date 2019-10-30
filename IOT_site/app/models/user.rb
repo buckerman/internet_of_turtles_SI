@@ -1,6 +1,9 @@
 class User < ApplicationRecord
-  has_secure_password
-  
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_one_attached :image
+  has_secure_password  
+
   validates :email, presence: true, uniqueness: true
   
   # validates :occupation, presence: true
@@ -9,5 +12,6 @@ class User < ApplicationRecord
   # :user_id = 0
   # validates :image_url, allow_blank: true, format: {with: %r{\.( gif | jpg | png )\Z }i ,message: 'must be a URL for GIF , JPG or PNG image . '}
 
-  
+  has_many :turtles
 end
+

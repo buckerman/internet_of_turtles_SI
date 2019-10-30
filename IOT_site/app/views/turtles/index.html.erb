@@ -1,6 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<% if current_user %>
 
 <h1>Turtles</h1>
 
@@ -28,10 +27,10 @@
         <td><%= turtle.species %></td>
         <td><%= turtle.fixation_date %></td>
         <td><%= turtle.birthday %></td>
-        <td><%= turtle.researcher_id %></td>
+        <td></td>
         <td><%= turtle.description %></td>
-        <% if turtle.researcher_id == current_user.id || super_user %>
         <td><%= link_to 'Show', turtle %></td>
+        <% if turtle.user == current_user || super_user %>
         <td><%= link_to 'Edit', edit_turtle_path(turtle) %></td>
         <td><%= link_to 'Destroy', turtle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
@@ -44,10 +43,11 @@
 
 <br>
 
+<% if current_user %>
 <%= link_to 'New Turtle', new_turtle_path %>
 
 <% else %>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   window.location = "<%= home_path %>";
-</script>
+</script> -->
 <% end %>
