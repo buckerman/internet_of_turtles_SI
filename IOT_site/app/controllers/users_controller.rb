@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   # GET /users
   # GET /users.json
   def index
@@ -27,7 +27,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     # p user_params
     respond_to do |format|
-      @user.registration_date = Time.now.getutc
       
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -43,6 +42,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
+      # @user.image.attach(user_params[:image])
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
@@ -71,6 +71,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:user_id, :name, :email, :password, :password_confirmation, :sex, :photo_id, :registration_date, :description, :occupation, :institution)
+      params.require(:user).permit(:image, :name, :email, :password, :password_confirmation, :sex, :description, :occupation, :institution)
     end
 end

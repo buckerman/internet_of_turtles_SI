@@ -10,14 +10,20 @@
       </ul>
     </div>
   <% end %>
+  
 
-  <!-- <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
-    <%= form.hidden_field :user_id %>
-    
-  </div> -->
-
+  
+  <div class="field">
+    <%= form.label "Image" %>
+    <% if @user.image.attached? %>
+    <image class="img-responsive" src="<%= (url_for(@user.image)) %>">
+    <% else %>
+    <%= image_tag ("default-profile.png"), class: "img-responsive"%>
+    <!-- <image src="default-profile.png"> -->
+    <% end %></br>
+    <%= form.file_field :image %>
+  </div>
+  
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
@@ -42,16 +48,6 @@
     <%= form.label :sex %>
     <%= form.select :sex, ['Male', 'Female', 'Other'],include_blank: true %>
   </div>
-<!-- 
-  <div class="field">
-    <%= form.label :photo_id %>
-    <%= form.number_field :photo_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :registration_date %>
-    <%= form.date_select :registration_date %>
-  </div> -->
 
   <div class="field">
     <%= form.label :description %>

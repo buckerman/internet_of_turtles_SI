@@ -17,7 +17,7 @@ class TurtlesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create turtle" do
     assert_difference('Turtle.count') do
-      post turtles_url, params: { turtle: { birthday: @turtle.birthday, description: @turtle.description, fixation_date: @turtle.fixation_date, integer: @turtle.integer, name: @turtle.name, researcher_id: @turtle.researcher_id, sex: @turtle.sex, species: @turtle.species, turtle_id: @turtle.turtle_id } }
+      post turtles_url, params: { turtle: { birthday: @turtle.birthday, description: @turtle.description, fixation_date: @turtle.fixation_date, integer: @turtle.integer, name: @turtle.name, user_id: @turtle.user_id, sex: @turtle.sex, species: @turtle.species, turtle_id: @turtle.turtle_id } }
     end
 
     assert_redirected_to turtle_url(Turtle.last)
@@ -34,7 +34,7 @@ class TurtlesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update turtle" do
-    patch turtle_url(@turtle), params: { turtle: { birthday: @turtle.birthday, description: @turtle.description, fixation_date: @turtle.fixation_date, integer: @turtle.integer, name: @turtle.name, researcher_id: @turtle.researcher_id, sex: @turtle.sex, species: @turtle.species, turtle_id: @turtle.turtle_id } }
+    patch turtle_url(@turtle), params: { turtle: { birthday: @turtle.birthday, description: @turtle.description, fixation_date: @turtle.fixation_date, integer: @turtle.integer, name: @turtle.name, user_id: @turtle.user_id, sex: @turtle.sex, species: @turtle.species, turtle_id: @turtle.turtle_id } }
     assert_redirected_to turtle_url(@turtle)
   end
 

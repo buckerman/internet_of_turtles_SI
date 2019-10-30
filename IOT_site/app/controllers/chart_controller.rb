@@ -2,7 +2,6 @@ class ChartController < ApplicationController
   skip_before_action :verify_authenticity_token
   layout 'application'
   def index
-    render locals: { hidden: 'John' }
   end
   def destroy
     @comentario = Comentario.find(params[:id])

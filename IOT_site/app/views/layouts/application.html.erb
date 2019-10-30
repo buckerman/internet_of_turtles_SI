@@ -28,6 +28,7 @@
     <%= link_to "Log In", login_path %>
     <% end %>
 
+
   </div>
   <div>
 
@@ -37,14 +38,16 @@
     <% if super_user %>
     <span> | <%= link_to "Edit Users", users_path %> </span> |
     <% end %>
-    <span> <%= link_to "My Turtles", turtles_path %> </span>
+    <span> <%= link_to "Turtles", turtles_path %> </span>
     <% end %>
 
 
     </br>
   </div>
-  <%= yield %>
+  <%= yield %></br>
+  <div>
   footer
+  </div>
 </body>
 
 </html>

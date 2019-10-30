@@ -1,5 +1,5 @@
 Turtle:
-	- id:integer name:string
+	-name:string
     -sex:string
     -species:string
     -fixation_date:timestamp
@@ -7,8 +7,7 @@ Turtle:
     -researcher_id:integer
     -description:text
 
-dados_coletados:
-	- id da tartaruga
+collected_data:
 	- temperatura
 	- profundidade
 	- luz: float
@@ -18,12 +17,10 @@ dados_coletados:
 
 
 User:
-    -user_id:integer
     -name:string
     -email:string
     -password:digest
     -sex:string
-    -photo_id:integer
     -registration_date:date
     -description:text
     -occupation:string

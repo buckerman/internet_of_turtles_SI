@@ -24,14 +24,15 @@ class TurtlesController < ApplicationController
   # POST /turtles
   # POST /turtles.json
   def create
-    @turtle = Turtle.new(turtle_params)
-    
-    if super_user
-      
+    if super_user  
+      user = User.find(turtle_params[:user_id])
     else
-      @turtle.researcher_id = current_user.id
+      @turtle.user_id = current_user.id
+      user = current_user
       # @turtle.researcher = User.find(current_user.id)
     end
+    @turtle = Turtle.new(turtle_params)
+    
     respond_to do |format|
       
       if @turtle.save
@@ -76,6 +77,6 @@ class TurtlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def turtle_params
-      params.require(:turtle).permit(:turtle_id, :integer, :name, :sex, :species, :fixation_date, :birthday, :researcher_id, :description)
+      params.require(:turtle).permit(:name, :sex, :species, :fixation_date, :birthday, :description, :user_id)
     end
 end

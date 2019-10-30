@@ -19,7 +19,7 @@ class TurtlesTest < ApplicationSystemTestCase
     fill_in "Fixation date", with: @turtle.fixation_date
     fill_in "Integer", with: @turtle.integer
     fill_in "Name", with: @turtle.name
-    fill_in "Researcher", with: @turtle.researcher_id
+    fill_in "User", with: @turtle.user_id
     fill_in "Sex", with: @turtle.sex
     fill_in "Species", with: @turtle.species
     fill_in "Turtle", with: @turtle.turtle_id
@@ -38,7 +38,7 @@ class TurtlesTest < ApplicationSystemTestCase
     fill_in "Fixation date", with: @turtle.fixation_date
     fill_in "Integer", with: @turtle.integer
     fill_in "Name", with: @turtle.name
-    fill_in "Researcher", with: @turtle.researcher_id
+    fill_in "User", with: @turtle.user_id
     fill_in "Sex", with: @turtle.sex
     fill_in "Species", with: @turtle.species
     fill_in "Turtle", with: @turtle.turtle_id

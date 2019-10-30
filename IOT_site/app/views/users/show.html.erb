@@ -1,5 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<strong>Image:</strong>
+<% if @user.image.attached? %>
+  <image src="<%= (url_for(@user.image)) %>">
+<% else %>
+<%= image_tag ("default-profile.png"), class: "img-responsive"%>
+  <!-- <image src="default-profile.png"> -->
+
+<% end %>
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
@@ -16,13 +24,8 @@
 </p>
 
 <p>
-  <strong>Photo:</strong>
-  <%= @user.photo_id %>
-</p>
-
-<p>
   <strong>Registration date:</strong>
-  <%= @user.registration_date %>
+  <%= @user.created_at %>
 </p>
 
 <p>
