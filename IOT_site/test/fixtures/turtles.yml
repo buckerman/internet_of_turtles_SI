@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  turtle_id: 1
+  integer: MyString
+  name: MyString
+  sex: MyString
+  species: MyString
+  fixation_date: 2019-10-24 11:08:27
+  birthday: 2019-10-24 11:08:27
+  user_id: 1
+  description: MyText
+
+two:
+  turtle_id: 1
+  integer: MyString
+  name: MyString
+  sex: MyString
+  species: MyString
+  fixation_date: 2019-10-24 11:08:27
+  birthday: 2019-10-24 11:08:27
+  user_id: 1
+  description: MyText

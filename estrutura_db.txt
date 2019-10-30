@@ -1,15 +1,13 @@
-tartaruga:
-	- id: int
-	- nome: string
-	- sexo: string
-	- especie: string
-	- data de instalação modulo: date_time
-	- aniversário estimada: date_time
-	- id_pesquisador: int
-	- descricão: text
+Turtle:
+	-name:string
+    -sex:string
+    -species:string
+    -fixation_date:timestamp
+    -birthday:timestamp
+    -researcher_id:integer
+    -description:text
 
-dados_coletados:
-	- id da tartaruga
+collected_data:
 	- temperatura
 	- profundidade
 	- luz: float
@@ -18,16 +16,17 @@ dados_coletados:
 	- data: date_time
 
 
-usuários:
-	- nome string
-	- email: string
-	- senha: hash
-	- id da foto: int
-	- aniversário: date_time 
-	- telefone: int
-	- profissão: string
-	- instituição: instituição
-	- descrição: text
+User:
+    -name:string
+    -email:string
+    -password:digest
+    -sex:string
+    -registration_date:date
+    -description:text
+    -occupation:string
+    -institution:string
+
+
 
 mergulho:
 	- id da tartaruga

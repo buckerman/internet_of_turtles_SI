@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+
+<h1>Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Sex</th>
+      <th>Registration date</th>
+      <th>Description</th>
+      <th>Occupation</th>
+      <th>Institution</th>
+      <th>Turtles</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.sex %></td>
+        <td><%= user.created_at %></td>
+        <td><%= user.description %></td>
+        <td><%= user.occupation %></td>
+        <td><%= user.institution %></td>
+        <td><select>
+          </select></td>
+        <td><%= link_to 'Show', user %>
+        </br><%= link_to 'Edit', edit_user_path(user) %>
+        </br><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+      
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>
+<% if super_user %>
+
+<% else %>
+<!-- <script type="text/javascript">
+  window.location = "<%= home_path %>";
+</script> -->
+<% end %>

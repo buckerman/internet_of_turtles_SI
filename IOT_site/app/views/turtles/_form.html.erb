@@ -1,0 +1,57 @@
+<%= form_with(model: turtle, local: true) do |form| %>
+  <% if turtle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(turtle.errors.count, "error") %> prohibited this turtle from being saved:</h2>
+
+      <ul>
+        <% turtle.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sex %>
+    <%= form.select :sex, ['Male', 'Female'],include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :species %>
+    <%= form.select :species, ['Loggerhead', 'Green turtle', 'Leatherback', 'Hawksbill', 'Kemp\'s ridley', 'Olive ridley', 'Flatback'],include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fixation_date %>
+    <%= form.datetime_select :fixation_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :birthday %>
+    <%= form.datetime_select :birthday %>
+  </div>
+  <%= User.all.select(:id).to_a.uniq{|p| p.id} %>
+</br>
+  <%= User.all.collect { |user| [user.name, user.id] } %>
+  <% if super_user %>
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.select :user_id, User.all.collect { |user| [user.name, user.id] } , value: super_user.id %>
+  </div>
+  <% end %>
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

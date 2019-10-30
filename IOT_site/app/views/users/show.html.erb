@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<strong>Image:</strong>
+<% if @user.image.attached? %>
+  <image src="<%= (url_for(@user.image)) %>">
+<% else %>
+<%= image_tag ("default-profile.png"), class: "img-responsive"%>
+  <!-- <image src="default-profile.png"> -->
+
+<% end %>
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Sex:</strong>
+  <%= @user.sex %>
+</p>
+
+<p>
+  <strong>Registration date:</strong>
+  <%= @user.created_at %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @user.description %>
+</p>
+
+<p>
+  <strong>Occupation:</strong>
+  <%= @user.occupation %>
+</p>
+
+<p>
+  <strong>Institution:</strong>
+  <%= @user.institution %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

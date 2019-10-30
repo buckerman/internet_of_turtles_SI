@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+
+
+
+    <h1 class="classloader">Analysis</h1>
+    <ul>
+        <li id="bars">bars</li>
+        <li id="donuts">dounts</li>
+    </ul>
+    <div class="chart"></div>
+    <div id="my_dataviz"></div>
+    <script>
+        // $('.chart')[0].innerHTML = ("<%= j (render partial: 'chart') %>")
+
+        $(document).ready(function () {
+
+            $('#bars').click(function () { 
+                $('.chart').html("<%=j(render :partial => 'chart/chart', :locals => {:analysis => 'analysis/2' , :chart_type => 'bars'} )%>");
+            });
+            $('#donuts').click(function () { 
+                $('.chart').html("<%=j(render :partial => 'chart/chart', :locals => {:analysis => 'analysis/2' , :chart_type => 'donuts'} )%>");
+            });
+
+        })
+
+    </script>
+</body>
+
+
+</html>
