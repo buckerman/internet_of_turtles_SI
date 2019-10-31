@@ -1,47 +1,60 @@
-<p id="notice"><%= notice %></p>
+<div class="form-mine">
+  <h1 class="display-4 text-center" >Show User</h1>
+<%= form_with  model: @user do |form| %>
+  <fieldset disabled>
 
-<strong>Image:</strong>
-<% if @user.image.attached? %>
-  <image src="<%= (url_for(@user.image)) %>">
-<% else %>
-<%= image_tag ("default-profile.png"), class: "img-responsive"%>
-  <!-- <image src="default-profile.png"> -->
+  <div class="form-group">
+    <%= form.label "Image", class: "control-label" %>
+    <br/>
+    <% if @user.image.attached? %>
+      <img class="img-thumbnail"  style="width:200px;margin-right: 10px"  src="<%= (url_for(@user.image)) %>">
+    <% else %>
+      <%= image_tag("defaultProfile.png", :class => "img-thumbnail", :style => "width:200px;margin-right: 10px") %>
+      <!-- <image src="defaultProfile.png"> -->
+    <% end %></br>
+  </div>
 
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :password %>
+    <%= form.password_field :password, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :sex %>
+    <%= form.select :sex, ['','Male', 'Female', 'Other'],{} ,{class: "form-control"} %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: "form-control"  %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :occupation %>
+    <%= form.text_field :occupation, class: "form-control"  %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :institution %>
+    <%= form.text_field :institution, class: "form-control"  %>
+  </div>
+  </fieldset>
 <% end %>
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Sex:</strong>
-  <%= @user.sex %>
-</p>
-
-<p>
-  <strong>Registration date:</strong>
-  <%= @user.created_at %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @user.description %>
-</p>
-
-<p>
-  <strong>Occupation:</strong>
-  <%= @user.occupation %>
-</p>
-
-<p>
-  <strong>Institution:</strong>
-  <%= @user.institution %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <br/>
+  <%= link_to 'Show users', users_path,class: "btn btn-light form-control" %>
+</div>

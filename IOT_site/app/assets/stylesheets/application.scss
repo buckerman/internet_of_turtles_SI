@@ -22,3 +22,28 @@
  *= require_tree .
  *= require_self
  */
+
+//@import "bootstrap-sprockets";
+//@import "bootstrap";
+@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css");
+
+body {
+  /* The image used */
+  background-image: url("fishUnderwater.jpg");
+
+
+  /* Center and scale the image nicely */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, Sans-Serif, serif;
+}
+
+.icon-mine img{
+  height: 10px;
+  margin-right: -8px;
+  margin-bottom: -6px;
+  vertical-align:text-bottom;
+}
