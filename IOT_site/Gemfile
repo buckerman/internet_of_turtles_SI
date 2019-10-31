@@ -59,3 +59,4 @@ gem 'd3-rails'
 gem 'devise'
 
 #gem 'bootstrap-sass'
+gem 'gmaps4rails'
