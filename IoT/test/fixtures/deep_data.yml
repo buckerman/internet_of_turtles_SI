@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  turtle: one
+  temperature: 1.5
+  deep: 1.5
+  light: 1.5
+  latitude: 1.5
+  longitude: 1.5
+
+two:
+  turtle: two
+  temperature: 1.5
+  deep: 1.5
+  light: 1.5
+  latitude: 1.5
+  longitude: 1.5

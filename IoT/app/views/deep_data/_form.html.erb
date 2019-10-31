@@ -1,0 +1,47 @@
+<%= form_with(model: deep_datum, local: true) do |form| %>
+  <% if deep_datum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(deep_datum.errors.count, "error") %> prohibited this deep_datum from being saved:</h2>
+
+      <ul>
+      <% deep_datum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :turtle_id %>
+    <%= form.text_field :turtle_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :temperature %>
+    <%= form.text_field :temperature %>
+  </div>
+
+  <div class="field">
+    <%= form.label :deep %>
+    <%= form.text_field :deep %>
+  </div>
+
+  <div class="field">
+    <%= form.label :light %>
+    <%= form.text_field :light %>
+  </div>
+
+  <div class="field">
+    <%= form.label :latitude %>
+    <%= form.text_field :latitude %>
+  </div>
+
+  <div class="field">
+    <%= form.label :longitude %>
+    <%= form.text_field :longitude %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

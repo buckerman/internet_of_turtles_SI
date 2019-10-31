@@ -1,4 +1,4 @@
-<%= form_with(model: user, local: true) do |form| %>
+<%= form_with  model: @user do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -13,58 +13,60 @@
   
 
   
-  <div class="field">
-    <%= form.label "Image" %>
+  <div class="form-group">
+    <%= form.label "Image", class: "control-label" %>
+    <br/>
     <% if @user.image.attached? %>
-    <image class="img-responsive" src="<%= (url_for(@user.image)) %>">
+    <img class="img-thumbnail"  style="width:200px;margin-right: 10px"  src="<%= (url_for(@user.image)) %>">
     <% else %>
-    <%= image_tag ("default-profile.png"), class: "img-responsive"%>
-    <!-- <image src="default-profile.png"> -->
+      <%= image_tag("defaultProfile.png", :class => "img-thumbnail", :style => "width:200px;margin-right: 10px") %>
+    <!-- <image src="defaultProfile.png"> -->
     <% end %></br>
-    <%= form.file_field :image %>
+    <br/>
+    <%= form.file_field :image, class: "form-control-file" %>
   </div>
   
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :password %>
-    <%= form.password_field :password %>
+    <%= form.password_field :password, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation %>
+    <%= form.password_field :password_confirmation, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :sex %>
-    <%= form.select :sex, ['Male', 'Female', 'Other'],include_blank: true %>
+    <%= form.select :sex, ['','Male', 'Female', 'Other'],{} ,{class: "form-control"} %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class: "form-control"  %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :occupation %>
-    <%= form.text_field :occupation %>
+    <%= form.text_field :occupation, class: "form-control"  %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :institution %>
-    <%= form.text_field :institution %>
+    <%= form.text_field :institution, class: "form-control"  %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit  :Submit, class: 'btn btn-success form-control' %>
   </div>
 <% end %>

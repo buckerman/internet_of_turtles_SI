@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Turtle:</strong>
+  <%= @deep_datum.turtle %>
+</p>
+
+<p>
+  <strong>Temperature:</strong>
+  <%= @deep_datum.temperature %>
+</p>
+
+<p>
+  <strong>Deep:</strong>
+  <%= @deep_datum.deep %>
+</p>
+
+<p>
+  <strong>Light:</strong>
+  <%= @deep_datum.light %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @deep_datum.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @deep_datum.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_deep_datum_path(@deep_datum) %> |
+<%= link_to 'Back', deep_data_path %>

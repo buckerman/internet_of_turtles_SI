@@ -1,0 +1,14 @@
+rails new IoT
+
+cd IOT
+
+rails generate scaffold User name:string email:string password:string photo_id:string gender:string birthday:date telephone:integer researcher:boolean career:string institution:string description:text
+
+rails generate scaffold Turtle name:string sex:string specie:string module_installation_date:datetime estimated_birthday:date user:belongs_to description:text
+
+rails generate scaffold Collected_Data turtle:belongs_to temperature:float deep:float light:float latitude:float longitude:float date:datetime
+
+rails generate scaffold Deep_Data turtle:belongs_to temperature:float deep:float light:float latitude:float longitude:float
+
+rails db:migrate
+
