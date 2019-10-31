@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'map/index'
+  get 'map/traker'
   resources :turtle_data
   # devise_for :users do
   #     # root to: "devise/sessions#new"
@@ -25,10 +27,10 @@ Rails.application.routes.draw do
     end
   end
   
+  resources :map
   resources :users
   resources :turtles
   resources :turtle_data
-
   resources :sessions
   
   # resources :sessions, only: [:new, :create, :destroy]
