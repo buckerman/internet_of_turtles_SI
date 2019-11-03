@@ -69,6 +69,18 @@ class TurtlesController < ApplicationController
     end
   end
 
+
+  def turtle_info
+    puts "test"
+    puts params[:id]
+    @turtle = Turtle.all.find(params[:id])
+    respond_to do |format|
+      # format.html { redirect_to @turtle, notice: 'Turtle was successfully created.' }
+      format.html { render partial: 'turtle_info'}
+      format.json { render :json => @turtle.turtle_data}
+    end
+  end
+  
   private
 
   # Use callbacks to share common setup or constraints between actions.
