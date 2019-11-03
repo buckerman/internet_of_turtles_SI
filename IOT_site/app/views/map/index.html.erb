@@ -1,6 +1,10 @@
-
 <div style='width: 800px;'>
     <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+<div id="turtle_info">
+
+
 </div>
 
 <script type="text/javascript">
@@ -25,31 +29,93 @@
             position: google.maps.ControlPosition.RIGHT_TOP
         }
     });
+
+
     var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
     var icons = {
         turtle: {
             icon: "<%= (image_url('icon_turtle.svg')) %> "
         }
+
     };
 
-    var features = [{
-        position: new google.maps.LatLng(-20.0000, -35.0000),
-        type: 'turtle'
-    }];
 
+    var selected_turtle = 0;
+
+    var path_coordinates = [];
+
+    var turtleMovement = new google.maps.Polyline({
+        path: [],
+        geodesic: true,
+        strokeColor: '#FFFF00',
+        strokeOpacity: 1.0,
+        strokeWeight: 2
+    });
     var infowindow = new google.maps.InfoWindow({
-        content: "test"
+        content: ""
     });
 
     // Create markers.
-    features.forEach(function (feature) {
+    var turtle_features = [
+    <% @turtles.each do | turtle | %>
+        {position: new google.maps.LatLng(<%= turtle.turtle_data.last.latitude %>, <%= turtle.turtle_data.last.longitude %>),
+        info_url: "<%= turtle_info_path(turtle.id) %>",
+        id: "<%= turtle.id %>",
+        type: 'turtle'},
+    <% end %>];
+    console.log(turtle_features);
+    function show_turtle_info(turtle_url) {
+        $.get(turtle_url,
+            function (data) {
+                $("div#turtle_info").html(data);
+            }, 'html'
+        );
+
+    };
+    function show_turtle_movements(turtle_url) {
+        $.ajax({
+            url: turtle_url,
+            contentType: 'application/json; charset=utf-8',
+            type: "GET",
+            dataType: 'JSON',
+            success: function (json) {
+                var coords = json.map(turtle_ping => {
+                    return {
+                        'lat': turtle_ping.latitude,
+                        'lng': turtle_ping.longitude
+                    }
+                });
+                // console.log(coords);
+                turtleMovement.setPath(coords);
+            }
+        });
+    }
+
+
+    turtle_features.forEach(function (feature) {
         var marker = new google.maps.Marker({
             position: feature.position,
             icon: icons[feature.type].icon,
             map: map
         });
         marker.addListener('click', function () {
+            infowindow.setContent("Last Data:\n ");
             infowindow.open(map, marker);
+
+            if (selected_turtle != feature.id) {
+                show_turtle_info(feature.info_url);
+                show_turtle_movements(feature.info_url);
+                turtleMovement.setMap(map);
+                selected_turtle = feature.id;
+            } else {
+                selected_turtle = 0;
+                infowindow.close();
+                turtleMovement.setMap(null);
+                $("div#turtle_info").html("");
+            }
+            showing_path = !showing_path;
         });
     });
+    // var markerCluster = new MarkerClusterer(map, markers,
+    //         {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 </script>
