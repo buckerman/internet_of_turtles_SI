@@ -65,6 +65,7 @@
     // Create markers.
     var turtle_features = [
         <% @turtles.each do | turtle | %>
+        <% next unless turtle.turtle_data.last != nil%>
         {
             position: new google.maps.LatLng(<%= turtle.turtle_data.last.latitude %>, <%= turtle.turtle_data.last.longitude %>),
             info_url: "<%= turtle_info_path(turtle.id) %>",
@@ -104,7 +105,7 @@
                         icon: icons["ping"],
                         map: map
                     });
-                    marker.addListener('mouseover', function () {
+                    marker.addListener('click', function () {
                         infowindow.setContent(turtle_ping.created_at);
                         infowindow.open(map, marker);
                     });

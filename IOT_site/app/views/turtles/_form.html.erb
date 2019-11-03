@@ -37,9 +37,7 @@
     <%= form.label :birthday %>
     <%= form.datetime_select :birthday %>
   </div>
-  <%= User.all.select(:id).to_a.uniq{|p| p.id} %>
-</br>
-  <%= User.all.collect { |user| [user.name, user.id] } %>
+
   <% if super_user %>
   <div class="field">
     <%= form.label :user_id %>
