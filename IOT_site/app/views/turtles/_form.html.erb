@@ -11,47 +11,48 @@
     </div>
   <% end %>
 
-
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control",:required => true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :sex %>
-    <%= form.select :sex, ['Male', 'Female'], include_blank: true %>
+    <%= form.select :sex, ['', 'Male', 'Female', 'Other'], {}, {class: "form-control"} %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :species %>
-    <%= form.select :species, ['Loggerhead', 'Green turtle', 'Leatherback', 'Hawksbill', 'Kemp\'s ridley', 'Olive ridley', 'Flatback'], include_blank: true %>
+    <%= form.select :species, ['Loggerhead', 'Green turtle', 'Leatherback', 'Hawksbill', 'Kemp\'s ridley', 'Olive ridley', 'Flatback'],{}, {class: "form-control"}%>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :fixation_date %>
-    <%= form.datetime_select :fixation_date %>
+    <br/>
+    <%= form.datetime_select :fixation_date,class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :birthday %>
-    <%= form.datetime_select :birthday %>
+    <br/>
+    <%= form.datetime_select :birthday,class: "form-control"  %>
   </div>
-  <%= User.all.select(:id).to_a.uniq { |p| p.id } %>
-  </br>
-  <%= User.all.collect { |user| [user.name, user.id] } %>
+  <%#= User.all.select(:id).to_a.uniq { |p| p.id } %>
+<!--  </br>-->
+  <%#= User.all.collect { |user| [user.name, user.id] } %>
   <% if super_user %>
-    <div class="field">
+    <div class="form-group">
       <%= form.label :user_id %>
-      <%= form.select :user_id, User.all.collect { |user| [user.name, user.id] }, value: super_user.id %>
+      <br/>
+      <%= form.select :user_id, User.all.collect { |user| [user.name, user.id] }, {}, {class: "form-control"} %>
     </div>
   <% end %>
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description,class: "form-control"  %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit :Submit, class: 'btn btn-success form-control' %>
   </div>
 <% end %>

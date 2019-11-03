@@ -59,7 +59,7 @@
     var turtle_features = [
     <% @turtles.each do | turtle | %>
         {position: new google.maps.LatLng(<%= turtle.turtle_data.last.latitude %>, <%= turtle.turtle_data.last.longitude %>),
-        info_url: "<%= turtle_info_path(turtle.id) %>",
+        info_url: "<%= turtle_data_path(turtle.id) %>",
         id: "<%= turtle.id %>",
         type: 'turtle'},
     <% end %>];

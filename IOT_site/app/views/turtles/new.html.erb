@@ -1,11 +1,15 @@
+
+<div class="form-mine">
 <% if current_user %>
-  <h1>New Turtle</h1>
+    <h1 class="display-4 text-center"><b>New Turtle</b></h1>
 
   <%= render 'form', turtle: @turtle %>
-  <%= link_to 'Back', turtles_path %>
+    <br/>
+  <%= link_to 'Back', turtles_path, class: "btn btn-light   form-control" %>
 
 <% else %>
   <script type="text/javascript">
       window.location = "<%= home_path %>";
   </script>
 <% end %>
+</div>

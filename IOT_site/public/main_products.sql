@@ -1,0 +1,2 @@
+INSERT INTO products (id, created_at, updated_at) VALUES (1, '2019-10-29 00:04:25.855326', '2019-10-29 00:04:25.855326');
+INSERT INTO products (id, created_at, updated_at) VALUES (2, '2019-10-29 00:04:32.541017', '2019-10-29 00:04:32.541017');
