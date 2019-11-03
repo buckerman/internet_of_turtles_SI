@@ -1,5 +1,5 @@
 <div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
+    <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
 
 <div id="turtle_info">
@@ -8,8 +8,9 @@
 </div>
 
 <script type="text/javascript">
+
     map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -10.000, lng: -43.000},
+        center: { lat: -10.000, lng: -43.000 },
         zoom: 3,
         mapTypeId: 'hybrid',
 
@@ -34,12 +35,17 @@
     var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
     var icons = {
         turtle: {
-            icon: "<%= (image_url('icon_turtle.svg')) %> "
+                url: "<%= (image_url('icon_turtle.svg')) %> ",
+                scaledSize: new google.maps.Size(20, 20),
+                anchor: new google.maps.Point(10, 10)
+
+        },
+        ping: {
+            url: "<%=(image_url('yellow_dot.svg'))%>",
+            scaledSize: new google.maps.Size(10, 10),
+            anchor: new google.maps.Point(5, 5)
         }
-
     };
-
-
     var selected_turtle = 0;
 
     var path_coordinates = [];
@@ -51,18 +57,23 @@
         strokeOpacity: 1.0,
         strokeWeight: 2
     });
+    var ping_markers = [];
     var infowindow = new google.maps.InfoWindow({
         content: ""
     });
 
     // Create markers.
     var turtle_features = [
-    <% @turtles.each do | turtle | %>
-        {position: new google.maps.LatLng(<%= turtle.turtle_data.last.latitude %>, <%= turtle.turtle_data.last.longitude %>),
-        info_url: "<%= turtle_data_path(turtle.id) %>",
-        id: "<%= turtle.id %>",
-        type: 'turtle'},
-    <% end %>];
+        <% @turtles.each do | turtle | %>
+        {
+            position: new google.maps.LatLng(<%= turtle.turtle_data.last.latitude %>, <%= turtle.turtle_data.last.longitude %>),
+            info_url: "<%= turtle_info_path(turtle.id) %>",
+            id: "<%= turtle.id %>",
+            last_ping: "<%= turtle.turtle_data.last.created_at %>",
+            type: 'turtle'
+
+        },
+        <% end %>];
     console.log(turtle_features);
     function show_turtle_info(turtle_url) {
         $.get(turtle_url,
@@ -86,21 +97,38 @@
                     }
                 });
                 // console.log(coords);
+
+                ping_markers = json.map(turtle_ping => {
+                    var marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(turtle_ping.latitude, turtle_ping.longitude),
+                        icon: icons["ping"],
+                        map: map
+                    });
+                    marker.addListener('mouseover', function () {
+                        infowindow.setContent(turtle_ping.created_at);
+                        infowindow.open(map, marker);
+                    });
+                    return marker;
+                });
+                console.log(ping_markers );
                 turtleMovement.setPath(coords);
             }
         });
     }
 
 
-    turtle_features.forEach(function (feature) {
+    var markers = turtle_features.map(function (feature, i) {
         var marker = new google.maps.Marker({
             position: feature.position,
-            icon: icons[feature.type].icon,
+            icon: icons[feature.type],
             map: map
         });
         marker.addListener('click', function () {
-            infowindow.setContent("Last Data:\n ");
+            infowindow.setContent(feature.last_ping);
             infowindow.open(map, marker);
+            ping_markers.forEach(function(ping_marker){
+                ping_marker.setMap(null);
+            });
 
             if (selected_turtle != feature.id) {
                 show_turtle_info(feature.info_url);
@@ -113,9 +141,22 @@
                 turtleMovement.setMap(null);
                 $("div#turtle_info").html("");
             }
-            showing_path = !showing_path;
         });
+        return marker;
     });
-    // var markerCluster = new MarkerClusterer(map, markers,
-    //         {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
+    //set style options for marker clusters (these are the default styles)
+    mcOptions = {
+        styles: [{
+            text_color: 'white',
+            height: 53,
+            url: "<%=(image_url('turtle_cluster2.png'))%>",
+            width: 53
+        },
+        ]
+    }
+
+    //init clusterer with your options
+    var mc = new MarkerClusterer(map, markers, mcOptions);
+
 </script>
