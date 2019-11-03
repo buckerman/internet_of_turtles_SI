@@ -32,8 +32,4 @@
   <strong>Description:</strong>
   <%= @turtle.description %>
 </p>
-<% if @turtle.user_id == current_user.id || super_user %>
-<%= link_to 'Edit', edit_turtle_path(@turtle) %> |
-<% end %>
 
-<%= link_to 'Back', turtles_path %>
