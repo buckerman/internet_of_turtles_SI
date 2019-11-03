@@ -24,7 +24,7 @@ class TurtlesController < ApplicationController
   # POST /turtles
   # POST /turtles.json
   def create
-    if super_user  
+    if super_user
       user = User.find(turtle_params[:user_id])
     else
       @turtle.user_id = current_user.id
@@ -32,9 +32,9 @@ class TurtlesController < ApplicationController
       # @turtle.researcher = User.find(current_user.id)
     end
     @turtle = Turtle.new(turtle_params)
-    
+
     respond_to do |format|
-      
+
       if @turtle.save
         format.html { redirect_to @turtle, notice: 'Turtle was successfully created.' }
         format.json { render :show, status: :created, location: @turtle }
@@ -70,13 +70,14 @@ class TurtlesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_turtle
-      @turtle = Turtle.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def turtle_params
-      params.require(:turtle).permit(:name, :sex, :species, :fixation_date, :birthday, :description, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_turtle
+    @turtle = Turtle.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def turtle_params
+    params.require(:turtle).permit(:name, :sex, :species, :fixation_date, :birthday, :description, :user_id)
+  end
 end

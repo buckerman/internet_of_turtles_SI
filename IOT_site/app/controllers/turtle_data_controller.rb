@@ -62,13 +62,14 @@ class TurtleDataController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_turtle_datum
-      @turtle_datum = TurtleDatum.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def turtle_datum_params
-      params.require(:turtle_datum).permit(:turtle_id, :temperature, :light, :depth, :latitude, :longitude)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_turtle_datum
+    @turtle_datum = TurtleDatum.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def turtle_datum_params
+    params.require(:turtle_datum).permit(:turtle_id, :temperature, :light, :depth, :latitude, :longitude)
+  end
 end

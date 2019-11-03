@@ -15,10 +15,10 @@ Rails.application.routes.draw do
   # get 'sessions/new'
   # get 'sessions/create'
   # get 'sessions/destroy'
-  
+
   get 'home/index'
   root 'home#index'
-  
+
   # resources :home 
   resources :chart do
     collection do
@@ -26,13 +26,13 @@ Rails.application.routes.draw do
       post '/analysis/:analysis_id', to: 'chart#analysis'
     end
   end
-  
+
   resources :map
   resources :users
   resources :turtles
   resources :turtle_data
   resources :sessions
-  
+
   # resources :sessions, only: [:new, :create, :destroy]
   # get 'signup', to: 'users#new'
   # get 'login', to: 'users#login'

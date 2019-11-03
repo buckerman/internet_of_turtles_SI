@@ -17,7 +17,7 @@ class TurtleDataControllerTest < ActionDispatch::IntegrationTest
 
   test "should create turtle_datum" do
     assert_difference('TurtleDatum.count') do
-      post turtle_data_url, params: { turtle_datum: { depth: @turtle_datum.depth, latitude: @turtle_datum.latitude, light: @turtle_datum.light, longitude: @turtle_datum.longitude, temperature: @turtle_datum.temperature, turtle_id: @turtle_datum.turtle_id } }
+      post turtle_data_url, params: {turtle_datum: {depth: @turtle_datum.depth, latitude: @turtle_datum.latitude, light: @turtle_datum.light, longitude: @turtle_datum.longitude, temperature: @turtle_datum.temperature, turtle_id: @turtle_datum.turtle_id}}
     end
 
     assert_redirected_to turtle_datum_url(TurtleDatum.last)
@@ -34,7 +34,7 @@ class TurtleDataControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update turtle_datum" do
-    patch turtle_datum_url(@turtle_datum), params: { turtle_datum: { depth: @turtle_datum.depth, latitude: @turtle_datum.latitude, light: @turtle_datum.light, longitude: @turtle_datum.longitude, temperature: @turtle_datum.temperature, turtle_id: @turtle_datum.turtle_id } }
+    patch turtle_datum_url(@turtle_datum), params: {turtle_datum: {depth: @turtle_datum.depth, latitude: @turtle_datum.latitude, light: @turtle_datum.light, longitude: @turtle_datum.longitude, temperature: @turtle_datum.temperature, turtle_id: @turtle_datum.turtle_id}}
     assert_redirected_to turtle_datum_url(@turtle_datum)
   end
 

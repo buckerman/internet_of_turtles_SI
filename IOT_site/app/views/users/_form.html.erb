@@ -1,4 +1,4 @@
-<%= form_with  model: @user do |form| %>
+<%= form_with model: @user do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -10,22 +10,22 @@
       </ul>
     </div>
   <% end %>
-  
 
-  
+
+
   <div class="form-group">
     <%= form.label "Image", class: "control-label" %>
     <br/>
     <% if @user.image.attached? %>
-    <img class="img-thumbnail"  style="width:200px;margin-right: 10px"  src="<%= (url_for(@user.image)) %>">
+      <img class="img-thumbnail" style="width:200px;margin-right: 10px" src="<%= (url_for(@user.image)) %>">
     <% else %>
       <%= image_tag("defaultProfile.png", :class => "img-thumbnail", :style => "width:200px;margin-right: 10px") %>
-    <!-- <image src="defaultProfile.png"> -->
+      <!-- <image src="defaultProfile.png"> -->
     <% end %></br>
     <br/>
     <%= form.file_field :image, class: "form-control-file" %>
   </div>
-  
+
   <div class="form-group">
     <%= form.label :name %>
     <%= form.text_field :name, class: "form-control" %>
@@ -48,25 +48,25 @@
 
   <div class="form-group">
     <%= form.label :sex %>
-    <%= form.select :sex, ['','Male', 'Female', 'Other'],{} ,{class: "form-control"} %>
+    <%= form.select :sex, ['', 'Male', 'Female', 'Other'], {}, {class: "form-control"} %>
   </div>
 
   <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :description, class: "form-control"  %>
+    <%= form.text_area :description, class: "form-control" %>
   </div>
 
   <div class="form-group">
     <%= form.label :occupation %>
-    <%= form.text_field :occupation, class: "form-control"  %>
+    <%= form.text_field :occupation, class: "form-control" %>
   </div>
 
   <div class="form-group">
     <%= form.label :institution %>
-    <%= form.text_field :institution, class: "form-control"  %>
+    <%= form.text_field :institution, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit  :Submit, class: 'btn btn-success form-control' %>
+    <%= form.submit :Submit, class: 'btn btn-success form-control' %>
   </div>
 <% end %>

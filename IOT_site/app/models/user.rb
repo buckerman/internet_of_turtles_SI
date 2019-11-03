@@ -2,10 +2,10 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_one_attached :image
-  has_secure_password  
+  has_secure_password
 
   validates :email, presence: true, uniqueness: true
-  
+
   # validates :occupation, presence: true
   # validates :institution, presence: true
   # validates :password, length: { in: 6..20 }, format: {message: 'must be have between 6 and 20 chars'}

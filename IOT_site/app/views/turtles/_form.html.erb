@@ -20,12 +20,12 @@
 
   <div class="field">
     <%= form.label :sex %>
-    <%= form.select :sex, ['Male', 'Female'],include_blank: true %>
+    <%= form.select :sex, ['Male', 'Female'], include_blank: true %>
   </div>
 
   <div class="field">
     <%= form.label :species %>
-    <%= form.select :species, ['Loggerhead', 'Green turtle', 'Leatherback', 'Hawksbill', 'Kemp\'s ridley', 'Olive ridley', 'Flatback'],include_blank: true %>
+    <%= form.select :species, ['Loggerhead', 'Green turtle', 'Leatherback', 'Hawksbill', 'Kemp\'s ridley', 'Olive ridley', 'Flatback'], include_blank: true %>
   </div>
 
   <div class="field">
@@ -37,14 +37,14 @@
     <%= form.label :birthday %>
     <%= form.datetime_select :birthday %>
   </div>
-  <%= User.all.select(:id).to_a.uniq{|p| p.id} %>
-</br>
+  <%= User.all.select(:id).to_a.uniq { |p| p.id } %>
+  </br>
   <%= User.all.collect { |user| [user.name, user.id] } %>
   <% if super_user %>
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.select :user_id, User.all.collect { |user| [user.name, user.id] } , value: super_user.id %>
-  </div>
+    <div class="field">
+      <%= form.label :user_id %>
+      <%= form.select :user_id, User.all.collect { |user| [user.name, user.id] }, value: super_user.id %>
+    </div>
   <% end %>
   <div class="field">
     <%= form.label :description %>

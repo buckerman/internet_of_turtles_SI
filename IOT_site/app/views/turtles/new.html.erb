@@ -1,11 +1,11 @@
 <% if current_user %>
-<h1>New Turtle</h1>
+  <h1>New Turtle</h1>
 
-<%= render 'form', turtle: @turtle %>
-<%= link_to 'Back', turtles_path %>
+  <%= render 'form', turtle: @turtle %>
+  <%= link_to 'Back', turtles_path %>
 
 <% else %>
-<script type="text/javascript">
-  window.location = "<%= home_path %>";
-</script>
+  <script type="text/javascript">
+      window.location = "<%= home_path %>";
+  </script>
 <% end %>
