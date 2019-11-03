@@ -4,11 +4,11 @@ import json
 
 encoded_body = json.dumps({
 "turtle_id":1,
-"temperature":20.2,
-"light":93.2,
-"depth":10.0,
-"latitude":23.00000,
-"longitude":43.00000
+"temperature":24.2,
+"light":90.2,
+"depth":15.0,
+"latitude":-23.00000,
+"longitude":-43.00000
     })
 
 http = urllib3.PoolManager()

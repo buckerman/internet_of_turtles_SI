@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @turtle.name %>
+</p>
+
+<p>
+  <strong>Sex:</strong>
+  <%= @turtle.sex %>
+</p>
+
+<p>
+  <strong>Species:</strong>
+  <%= @turtle.species %>
+</p>
+
+<p>
+  <strong>Fixation date:</strong>
+  <%= @turtle.fixation_date %>
+</p>
+
+<p>
+  <strong>Birthday:</strong>
+  <%= @turtle.birthday %>
+</p>
+
+<p>
+  <strong>Researcher:</strong>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @turtle.description %>
+</p>
+<% if @turtle.user_id == current_user.id || super_user %>
+<%= link_to 'Edit', edit_turtle_path(@turtle) %> |
+<% end %>
+
+<%= link_to 'Back', turtles_path %>

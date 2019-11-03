@@ -6,13 +6,20 @@
 
 
 
-    <h1 class="classloader">Analysis</h1>
-    <ul>
-        <li id="bars">bars</li>
-        <li id="donuts">dounts</li>
-    </ul>
-    <div class="chart"></div>
-    <div id="my_dataviz"></div>
+<h1 class="display-4 text-center" ><b>Analysis</b></h1>
+    <div class="list-group form-mine" id="listTypes">
+      <h1 class="h3" >Choose the type of your graph:</h1>
+      <button type="button" id="bars" class="list-group-item list-group-item-action" >Bars</button>
+      <button type="button" id="donuts" class="list-group-item list-group-item-action">Donuts</button>
+    </div>
+<!--    <ul>-->
+<!--        <li id="bars">bars</li>-->
+<!--        <li id="donuts">dounts</li>-->
+<!--    </ul>-->
+<br/>
+<br/>
+    <div class="chart" ></div>
+    <div id="my_dataviz" ></div>
     <script>
         // $('.chart')[0].innerHTML = ("<%= j (render partial: 'chart') %>")
 

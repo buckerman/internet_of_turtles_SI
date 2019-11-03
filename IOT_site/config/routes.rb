@@ -29,14 +29,11 @@ Rails.application.routes.draw do
   
   resources :map
   resources :users
-  resources :turtles
+  resources :turtles 
   resources :turtle_data
   resources :sessions
-  
-  # resources :sessions, only: [:new, :create, :destroy]
-  # get 'signup', to: 'users#new'
-  # get 'login', to: 'users#login'
-  # get 'logout', to: 'users#logout'
+
+  get 'map/turtle_info/:id',controller: 'turtles', action: 'turtle_info', as: 'turtle_info'
 
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
