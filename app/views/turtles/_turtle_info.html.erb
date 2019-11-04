@@ -1,0 +1,35 @@
+<p>
+  <strong>Name:</strong>
+  <%= @turtle.name %>
+</p>
+
+<p>
+  <strong>Sex:</strong>
+  <%= @turtle.sex %>
+</p>
+
+<p>
+  <strong>Species:</strong>
+  <%= @turtle.species %>
+</p>
+
+<p>
+  <strong>Fixation date:</strong>
+  <%= @turtle.fixation_date %>
+</p>
+
+<p>
+  <strong>Birthday:</strong>
+  <%= @turtle.birthday %>
+</p>
+
+<p>
+  <strong>Researcher:</strong>
+  <%= link_to @turtle.user.name , user_path %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @turtle.description %>
+</p>
+
