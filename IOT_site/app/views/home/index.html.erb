@@ -1,36 +1,47 @@
-<p id="notice"><%= notice %></p>
-<h1 class="display-4 text-center">TODO</h1>
-<div>
-  <h1>Get to know us:</h1>
-  <div class="row text-center">
-    <div class="col">
-      <div class="counter">
-        <i class="fa fa-search-location fa-2x"></i>
-        <h2 class="timer count-title count-number"><%=@turtles.length %></h2>
-        <p class="count-text ">Turtles tracked</p>
+<br/>
+<h1 class="display-3 text-dark text-center">Internet <i class="fa fa-globe-americas fa-1x"></i>f Turtles </h1>
+<br/>
+<br/>
+<div class="text-dark">
+  <div class="card" style="width: 400px;float: left;margin: 10px 50px 0px 10px" >
+    <%= image_tag("turtleMain.jpg", :class => "img-thumbnail", :style => "") %>
+    <div class="card-body">
+      <!--    <h5 class="card-title">Card title</h5>-->
+      <h2>Get to know us:</h2>
+      <div class="row text-center">
+        <div class="col">
+          <div class="counter">
+            <a class="text-info" href=<%= turtles_path %>>
+              <i class="fa fa-search-location fa-1x"></i>
+              <h2 class="timer count-title count-number"><%= @turtles.length %></h2>
+              <p class="count-text ">Turtles tracked</p></a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="counter">
+            <a class="text-info" href=<%= users_path %>>
+              <i class="fa fa-user-friends fa-1x"></i>
+              <h2 class="timer count-title count-number"><%= @users.length %></h2>
+              <p class="count-text ">Users registered</p></a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="counter">
+            <a class="text-info" href=<%= turtle_data_path %>>
+              <i class="fa fa-database fa-1x"></i>
+              <h2 class="timer count-title count-number"><%= @turtleDatas.length %></h2>
+              <p class="count-text ">Turtle datum stored</p></a>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col">
-      <div class="counter">
-        <i class="fa fa-user-friends fa-2x"></i>
-        <h2 class="timer count-title count-number"><%=@users.length %></h2>
-        <p class="count-text ">Users registered</p>
-      </div>
-    </div>
-    <div class="col">
-      <div class="counter">
-        <i class="fa fa-database fa-2x"></i>
-        <h2 class="timer count-title count-number"><%=@turtleDatas.length %></h2>
-        <p class="count-text ">Turtle data tracked</p>
-      </div>
-    </div>
-    <div class="col">
-      <div class="counter">
-        <i class="fa fa-bug fa-2x"></i>
-        <h2 class="timer count-title count-number" data-to="157" data-speed="1500"></h2>
-        <p class="count-text ">Coffee With Clients</p>
-      </div>
-    </div>
+  </div>
+  <div style="margin-right: 30px">
+    <h1 class="display-4 text-justify">
+      Internet of Turtles is a successful project to track sea turtle species.
+      Using swarm concepts, turtles can share data with each other. This way we can get data from your location even if the turtle in question does not appear in the data collection base.
+      <br/>You can check in the left our achievements and by clicking on icon, you can view our data.
+    </h1>
   </div>
 
 </div>
