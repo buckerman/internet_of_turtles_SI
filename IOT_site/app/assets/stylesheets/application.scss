@@ -30,7 +30,6 @@ body {
   /* The image used */
   background-image: url("fishUnderwater.jpg");
 
-
   /* Center and scale the image nicely */
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -51,3 +50,10 @@ body {
   margin: 0 10% 0 10%;
   align: center;
 }
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+

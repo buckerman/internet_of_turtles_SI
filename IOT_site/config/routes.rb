@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   # #     post 'users/sign_up', to: 'devise/registrations#create'
   # #   end
   # # #  do
-  # get 'home/login', to: 'devise/sessions#new' 
+  # get 'home/login', to: 'devise/sessions#new'
   #   # post ':controller(/:action(/:id(.:format)))'
   #   # get ':controller(/:action(/:id(.:format)))'
-  # end 
+  # end
 
   # get 'sessions/new'
   # get 'sessions/create'
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get 'home/index'
   root 'home#index'
 
-  # resources :home 
+  # resources :home
   resources :chart do
     collection do
       get '/', to: 'chart#index', as: 'analysis'
