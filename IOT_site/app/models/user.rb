@@ -4,7 +4,10 @@ class User < ApplicationRecord
   has_one_attached :image
   has_secure_password
 
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, :format => { 
+    :with => /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i,
+    :message => "must be a valid email address"
+  }
 
   # validates :occupation, presence: true
   # validates :institution, presence: true

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'about/index'
+  resources :contacts
   get 'map/index'
   get 'map/traker'
   resources :turtle_data

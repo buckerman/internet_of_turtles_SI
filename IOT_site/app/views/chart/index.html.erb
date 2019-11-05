@@ -2,37 +2,61 @@
 <html>
 
 <body>
+    <!-- 
+    <h1 class="display-4 text-center"><b>Analysis</b></h1>
+    <div class="list-group form-mine" id="listTypes">
+        <h1>Choose the type of your graph:</h1>
+        <button type="button" id="bars" class="list-group-item list-group-item-action">Bars</button>
+        <button type="button" id="donuts" class="list-group-item list-group-item-action">Donuts</button>
+    </div> -->
 
+    <h2 class="display-4 text-center"><b>Analysis</b></h2>
 
-<h1 class="display-4 text-center"><b>Analysis</b></h1>
-<div class="list-group form-mine" id="listTypes">
-  <h1>Choose the type of your graph:</h1>
-  <button type="button" id="bars" class="list-group-item list-group-item-action">Bars</button>
-  <button type="button" id="donuts" class="list-group-item list-group-item-action">Donuts</button>
-</div>
-<!--    <ul>-->
-<!--        <li id="bars">bars</li>-->
-<!--        <li id="donuts">dounts</li>-->
-<!--    </ul>-->
-<br/>
-<br/>
-<div class="chart"></div>
-<div id="my_dataviz"></div>
-<script>
-    // $('.chart')[0].innerHTML = ("<%= j (render partial: 'chart') %>")
+    <div class="chart-frame container text-center w-50">
+        <p>Choose the type of your graph:</p>
+        <div class="row align-items-start">
+            <div class="col align-self-center">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle " type="button" id="chart-title"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;">
+                        Bars
+                    </button>
+                    <div class="dropdown-menu form-mine align-self-right" id="listTypes"
+                        aria-labelledby="navbarDropdown">
+                        <button type="button" id="bars" class="dropdown-item">Bars</button>
+                        <button type="button" id="donuts" class="dropdown-item">Donuts</button>
+                        <div class="dropdown-divider"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col align-items-center" id="chart">
+                
+            </div>
+        </div>
+    </div>
+    <div id="my_dataviz"></div>
+    <script>
+        // $('.chart')[0].innerHTML = ("<%= j (render partial: 'chart') %>")
 
-    $(document).ready(function () {
+        $(document).ready(function () {
+            $('#chart').html("<%=j(render :partial => 'chart/chart', :locals => {:analysis => 'analysis/2' , :chart_type => 'bars'} )%>");
 
-        $('#bars').click(function () {
-            $('.chart').html("<%=j(render :partial => 'chart/chart', :locals => {:analysis => 'analysis/2' , :chart_type => 'bars'} )%>");
-        });
-        $('#donuts').click(function () {
-            $('.chart').html("<%=j(render :partial => 'chart/chart', :locals => {:analysis => 'analysis/2' , :chart_type => 'donuts'} )%>");
-        });
+            $('#bars').click(function () {
+                $('#chart').html("<%=j(render :partial => 'chart/chart', :locals => {:analysis => 'analysis/2' , :chart_type => 'bars'} )%>");
+                $('#chart-title').html(document.getElementById("bars").textContent);
+            });
+            $('#donuts').click(function () {
 
-    })
+                $('#chart').html("<%=j(render :partial => 'chart/chart', :locals => {:analysis => 'analysis/2' , :chart_type => 'donuts'} )%>");
+                $('#chart-title').html(document.getElementById("bars").textContent);
 
-</script>
+            });
+
+        })
+
+    </script>
 </body>
 
 
