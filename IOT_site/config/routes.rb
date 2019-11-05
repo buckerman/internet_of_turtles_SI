@@ -33,10 +33,7 @@ Rails.application.routes.draw do
   resources :turtle_data
   resources :sessions
 
-  # resources :sessions, only: [:new, :create, :destroy]
-  # get 'signup', to: 'users#new'
-  # get 'login', to: 'users#login'
-  # get 'logout', to: 'users#logout'
+  get 'map/turtle_info/:id',controller: 'turtles', action: 'turtle_info', as: 'turtle_info'
 
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
@@ -47,3 +44,4 @@ Rails.application.routes.draw do
   # get 'chart', to: 'chart#chart', as: 'chart'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
+

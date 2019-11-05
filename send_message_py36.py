@@ -7,12 +7,12 @@ encoded_body = json.dumps({
 "temperature":24.2,
 "light":90.2,
 "depth":15.0,
-"latitude":-23.00000,
-"longitude":-43.00000
+"latitude":-45.00000,
+"longitude":-0.00000
     })
 
 http = urllib3.PoolManager()
 
-response = http.request("POST", "http://localhost:3000/turtle_data",
+response = http.request("POST", "https://internet-of-turtles.herokuapp.com/turtle_data",
                  headers={'Content-Type': 'application/json'},
                  body=encoded_body)
