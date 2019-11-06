@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'about/index'
+  resources :contacts
   get 'map/index'
   get 'map/traker'
   resources :turtle_data
@@ -44,3 +46,4 @@ Rails.application.routes.draw do
   # get 'chart', to: 'chart#chart', as: 'chart'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
+

@@ -11,37 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :turtle_id %>
-    <%= form.text_field :turtle_id %>
+    <%= form.text_field :turtle_id,class:"form-control",:required => true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :temperature %>
-    <%= form.text_field :temperature %>
+    <%= form.text_field :temperature,class:"form-control",:required => true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :light %>
-    <%= form.text_field :light %>
+    <%= form.text_field :light,class:"form-control",:required => true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :depth %>
-    <%= form.text_field :depth %>
+    <%= form.text_field :depth,class:"form-control",:required => true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :latitude %>
-    <%= form.text_field :latitude %>
+    <%= form.text_field :latitude,class:"form-control",:required => true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :longitude %>
-    <%= form.text_field :longitude %>
+    <%= form.text_field :longitude,class:"form-control",:required => true %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit :Submit, class:"btn btn-success form-control" %>
   </div>
 <% end %>

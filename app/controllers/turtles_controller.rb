@@ -27,13 +27,14 @@ class TurtlesController < ApplicationController
     @turtle = Turtle.new(turtle_params)
     if super_user  
       user = User.find(turtle_params[:user_id])
-    else
+    else if not current_user.nil?
       @turtle.user_id = current_user.id
       puts "------------------debug --------------------"
       puts current_user.id
       puts @turtle.user_id
       user = current_user
       # @turtle.researcher = User.find(current_user.id)
+         end
     end
     
     respond_to do |format|

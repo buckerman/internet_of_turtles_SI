@@ -1,1 +1,0 @@
-INSERT INTO carts (id, created_at, updated_at) VALUES (4, '2019-10-29 00:41:42.006155', '2019-10-29 00:41:42.006155');

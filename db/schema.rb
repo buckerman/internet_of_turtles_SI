@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_29_173126) do
+ActiveRecord::Schema.define(version: 2019_11_05_003901) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +31,45 @@ ActiveRecord::Schema.define(version: 2019_10_29_173126) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "email"
+    t.string "message"
+  end
+
+  create_table "data", force: :cascade do |t|
+    t.integer "turtle_id", null: false
+    t.float "temperature"
+    t.float "light"
+    t.float "depth"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["turtle_id"], name: "index_data_on_turtle_id"
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "cart_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cart_id"], name: "index_line_items_on_cart_id"
+    t.index ["product_id"], name: "index_line_items_on_product_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "turtle_data", force: :cascade do |t|
@@ -73,6 +112,9 @@ ActiveRecord::Schema.define(version: 2019_10_29_173126) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "data", "turtles"
+  add_foreign_key "line_items", "carts"
+  add_foreign_key "line_items", "products"
   add_foreign_key "turtle_data", "turtles"
   add_foreign_key "turtles", "users"
 end

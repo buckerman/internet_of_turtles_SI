@@ -45,12 +45,14 @@
   <br/>
 
 
-  <% if @turtle.user_id == current_user.id || super_user %>
-    <%= link_to 'Edit', edit_turtle_path(@turtle), class: 'btn btn-info form-control' %>
-    <br/>
-    <br/>
+  <% if not current_user.nil? %>
+    <% if @turtle.user_id == current_user.id || super_user %>
+      <%= link_to 'Edit', edit_turtle_path(@turtle), class: 'btn btn-primary form-control' %>
+      <br/>
+      <br/>
+    <% end %>
   <% end %>
 
 
-  <%= link_to 'Back', turtles_path, class: 'btn btn-light form-control' %>
+  <%= link_to 'Show turtles', turtles_path, class: 'btn btn-light form-control' %>
 </div>
