@@ -1,35 +1,45 @@
-<p>
-  <strong>Name:</strong>
-  <%= @turtle.name %>
-</p>
+<br/>
+<h5 class="text-center">Turtle Informations</h5>
+  <%= form_with model: @turtle do |form| %>
+    <fieldset disabled>
 
-<p>
-  <strong>Sex:</strong>
-  <%= @turtle.sex %>
-</p>
+      <div class="form-group">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
 
-<p>
-  <strong>Species:</strong>
-  <%= @turtle.species %>
-</p>
+      <div class="form-group">
+        <%= form.label :sex %>
+        <%= form.select :sex, ['', 'Male', 'Female', 'Other'], {}, {class: "form-control"} %>
+      </div>
 
-<p>
-  <strong>Fixation date:</strong>
-  <%= @turtle.fixation_date %>
-</p>
+      <div class="form-group">
+        <%= form.label :species %>
+        <%= form.select :species, ['Loggerhead', 'Green turtle', 'Leatherback', 'Hawksbill', 'Kemp\'s ridley', 'Olive ridley', 'Flatback'], {}, {class: "form-control"} %>
+      </div>
 
-<p>
-  <strong>Birthday:</strong>
-  <%= @turtle.birthday %>
-</p>
+      <div class="form-group">
+        <%= form.label :fixation_date %>
+        <br/>
+        <%= form.datetime_select :fixation_date, class: "form-control" %>
+      </div>
 
-<p>
-  <strong>Researcher:</strong>
-  <%= link_to @turtle.user.name , user_path %>
-</p>
+      <div class="form-group">
+        <%= form.label :birthday %>
+        <br/>
+        <%= form.datetime_select :birthday, class: "form-control" %>
+      </div>
+    </fieldset>
 
-<p>
-  <strong>Description:</strong>
-  <%= @turtle.description %>
-</p>
-
+    <div class="form-group">
+      <%= form.label :user_id %>
+      <%= link_to @turtle.user.name, user_path(@turtle.user_id), class: 'btn btn-light form-control' %>
+    </div>
+    <fieldset disabled>
+      <div class="form-group">
+        <%= form.label :description %>
+        <%= form.text_area :description, class: "form-control" %>
+      </div>
+    </fieldset>
+  <% end %>
+  <br/>

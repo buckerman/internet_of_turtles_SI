@@ -1,34 +1,46 @@
-<p id="notice"><%= notice %></p>
+<div class="form-mine">
+  <h1 class="display-4 text-center"><b>Show User</b></h1>
+  <%= form_with model: @turtle_datum do |form| %>
+    <fieldset disabled>
 
-<p>
-  <strong>Turtle:</strong>
-  <%= @turtle_datum.turtle_id %>
-</p>
+      <div class="form-group">
+        <%= form.label :turtle_id %>
+        <%= form.text_field :turtle_id, class: "form-control" %>
+      </div>
 
-<p>
-  <strong>Temperature:</strong>
-  <%= @turtle_datum.temperature %>
-</p>
+      <div class="form-group">
+        <%= form.label :temperature %>
+        <%= form.text_field :temperature, class: "form-control" %>
+      </div>
 
-<p>
-  <strong>Light:</strong>
-  <%= @turtle_datum.light %>
-</p>
+      <div class="form-group">
+        <%= form.label :light %>
+        <%= form.text_field :light, class: "form-control" %>
+      </div>
 
-<p>
-  <strong>Depth:</strong>
-  <%= @turtle_datum.depth %>
-</p>
+      <div class="form-group">
+        <%= form.label :depth %>
+        <%= form.text_field :depth, class: "form-control" %>
+      </div>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @turtle_datum.latitude %>
-</p>
+      <div class="form-group">
+        <%= form.label :latitude %>
+        <%= form.text_field :latitude, class: "form-control" %>
+      </div>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @turtle_datum.longitude %>
-</p>
+      <div class="form-group">
+        <%= form.label :longitude %>
+        <%= form.text_field :longitude, class: "form-control" %>
+      </div>
+    </fieldset>
+  <% end %>
+  <br/>
+  <%= link_to 'Edit', edit_turtle_datum_path(@turtle_datum), class: "btn btn-primary form-control"  %>
+  <br/>
+  <br/>
+  <%= link_to 'Show turtles datum', turtle_data_path, class: "btn btn-light form-control"  %>
 
-<%= link_to 'Edit', edit_turtle_datum_path(@turtle_datum) %> |
-<%= link_to 'Back', turtle_data_path %>
+</div>
+
+
+

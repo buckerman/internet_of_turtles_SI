@@ -1,1 +1,0 @@
-INSERT INTO line_items (id, product_id, cart_id, created_at, updated_at) VALUES (2, 1, 4, '2019-10-29 00:42:30.952593', '2019-10-29 00:42:30.952593');
