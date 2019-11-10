@@ -4,10 +4,14 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
-    @turtles = Turtle.all
+    if !super_user
+      redirect_to home_path
+    else
+      @users = User.all
+      @turtles = Turtle.all
+  
+    end
   end
-
   # GET /users/1
   # GET /users/1.json
   def show
@@ -20,6 +24,10 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    if !current_user
+      redirect_to @user
+    end
+    
   end
 
   # POST /users

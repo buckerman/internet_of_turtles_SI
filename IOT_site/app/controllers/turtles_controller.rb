@@ -5,6 +5,7 @@ class TurtlesController < ApplicationController
   # GET /turtles.json
   def index
     @turtles = Turtle.all
+    
   end
 
   # GET /turtles/1
@@ -14,41 +15,51 @@ class TurtlesController < ApplicationController
 
   # GET /turtles/new
   def new
-    @turtle = Turtle.new
+    if !current_user
+      redirect_to home_path
+    else
+      @turtle = Turtle.new
+    end
   end
 
   # GET /turtles/1/edit
   def edit
+    if current_user != @turtle.user
+      redirect_to @turtle
+    end
   end
 
   # POST /turtles
   # POST /turtles.json
   def create
-    @turtle = Turtle.new(turtle_params)
-    if super_user  
-      user = User.find(turtle_params[:user_id])
-    else if not current_user.nil?
-      @turtle.user_id = current_user.id
-      puts "------------------debug --------------------"
-      puts current_user.id
-      puts @turtle.user_id
-      user = current_user
-      # @turtle.researcher = User.find(current_user.id)
-         end
-    end
-    
-    respond_to do |format|
+    if !current_user
+      redirect_to home_path
+    else
+      @turtle = Turtle.new(turtle_params)
+      if super_user  
+        user = User.find(turtle_params[:user_id])
+      else if not current_user.nil?
+        @turtle.user_id = current_user.id
+        puts "------------------debug --------------------"
+        puts current_user.id
+        puts @turtle.user_id
+        user = current_user
+        # @turtle.researcher = User.find(current_user.id)
+          end
+      end
       
-      if @turtle.save
-        format.html { redirect_to @turtle, notice: 'Turtle was successfully created.' }
-        format.json { render :show, status: :created, location: @turtle }
-      else
-        format.html { render :new }
-        format.json { render json: @turtle.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        
+        if @turtle.save
+          format.html { redirect_to @turtle, notice: 'Turtle was successfully created.' }
+          format.json { render :show, status: :created, location: @turtle }
+        else
+          format.html { render :new }
+          format.json { render json: @turtle.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
-
   # PATCH/PUT /turtles/1
   # PATCH/PUT /turtles/1.json
   def update
@@ -66,13 +77,16 @@ class TurtlesController < ApplicationController
   # DELETE /turtles/1
   # DELETE /turtles/1.json
   def destroy
-    @turtle.destroy
-    respond_to do |format|
-      format.html { redirect_to turtles_url, notice: 'Turtle was successfully destroyed.' }
-      format.json { head :no_content }
+    if !current_user
+      redirect_to home_path
+    else  
+      @turtle.destroy
+      respond_to do |format|
+        format.html { redirect_to turtles_url, notice: 'Turtle was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
-
 
   def turtle_info
     puts "test"
@@ -86,13 +100,13 @@ class TurtlesController < ApplicationController
   end
   
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_turtle
-      @turtle = Turtle.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_turtle
+    @turtle = Turtle.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def turtle_params
-      params.require(:turtle).permit(:name, :sex, :species, :fixation_date, :birthday, :description, :user_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def turtle_params
+    params.require(:turtle).permit(:name, :sex, :species, :fixation_date, :birthday, :description, :user_id)
+  end
 end
