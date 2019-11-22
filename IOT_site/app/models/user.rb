@@ -18,7 +18,7 @@ class User < ApplicationRecord
 
   def self.search(search)
     if search.present?
-        User.where('name LIKE ?', "%#{search}%")
+        User.where("name LIKE ? OR Institution LIKE ? OR email LIKE ?", "%#{search}%","%#{search}%", "%#{search}%")
     else
         User.all
     end

@@ -72,11 +72,12 @@
           <a class="nav-link" href=<%=new_contact_path %>>Contact</a>
         </li>
       </ul>
-      <%= form_for :search, :html => {class: "form-inline my-2 my-lg-0 ml-auto"} , :url => search_result_path do |f| %>
-      <%= f.text_field :search_text , :class => "form-control mr-sm-2" %>
-      <%= f.submit 'Search', :class => "btn btn-outline-info my-2 my-sm-0" %>
 
+      <%= form_tag search_result_path, :method => :get, :class => "form-inline my-2 my-lg-0 ml-auto" do %>
+      <%= text_field_tag :search_text ,params[:search_text] , :class => "form-control mr-sm-2" %>
+      <%= submit_tag 'Search' , :class => "btn btn-outline-info my-2 my-sm-0" %>
       <% end %>
+
 
 
       <br>

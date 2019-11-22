@@ -1,25 +1,13 @@
 Rails.application.routes.draw do
   get 'search/index'
-  post 'search/result'
+  get 'search/result'
+
   get 'about/index'
   resources :contacts
   
   get 'map/index'
   get 'map/traker'
   resources :turtle_data
-  # devise_for :users do
-  #     # root to: "devise/sessions#new"
-  # #     post 'users/sign_up', to: 'devise/registrations#create'
-  # #   end
-  # # #  do
-  # get 'home/login', to: 'devise/sessions#new'
-  #   # post ':controller(/:action(/:id(.:format)))'
-  #   # get ':controller(/:action(/:id(.:format)))'
-  # end
-
-  # get 'sessions/new'
-  # get 'sessions/create'
-  # get 'sessions/destroy'
 
   get 'home/index'
   root 'home#index'
