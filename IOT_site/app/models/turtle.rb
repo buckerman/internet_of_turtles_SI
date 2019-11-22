@@ -5,4 +5,12 @@ class Turtle < ApplicationRecord
 
     belongs_to :user
     has_many :turtle_data
+
+    def self.search(search)
+        if search.present?
+            Turtle.where('name LIKE ?', "%#{search}%")
+        else
+            Turtle.all
+        end
+      end  
 end

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  get 'search/index'
+  post 'search/result'
   get 'about/index'
   resources :contacts
+  
   get 'map/index'
   get 'map/traker'
   resources :turtle_data
@@ -21,11 +24,13 @@ Rails.application.routes.draw do
   get 'home/index'
   root 'home#index'
 
+
   # resources :home
   resources :chart do
     collection do
       get '/', to: 'chart#index', as: 'analysis'
-      post '/analysis/:analysis_id', to: 'chart#analysis'
+      # post '/analysis/:analysis_id', to: 'chart#analysis'
+      get '/analysis/:analysis_id', to: 'chart#analysis'
     end
   end
 

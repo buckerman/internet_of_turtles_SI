@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<body>
-    <!-- 
+<!-- 
     <h1 class="display-4 text-center"><b>Analysis</b></h1>
     <div class="list-group form-mine" id="listTypes">
         <h1>Choose the type of your graph:</h1>
@@ -10,72 +6,52 @@
         <button type="button" id="donuts" class="list-group-item list-group-item-action">Donuts</button>
     </div> -->
 
-    <h2 class="display-4 text-center"><b>Analysis</b></h2>
-    <div class="row">
-    <div class="text-center ml-5 w-60">
-      <p>Filters</p>
-    </div>
-    <div class="chart-frame container text-center mr-2" style="width:65%;">
+<h2 class="display-4 text-center"><b>Analysis</b></h2>
+<div class="row">
+    <!-- <div class="text-center ml-5 w-60">
+        <p>Filters</p>
+        Turtle Species
+        <div>
+            <input type="checkbox" class="checkbox" value="A" checked><label>Specie A</label> </br>
+            <input type="checkbox" class="checkbox" value="B" checked><label>Specie B</label> </br>
+            <input type="checkbox" class="checkbox" value="C" checked><label>Specie C</label> </br>
+            <input type="checkbox" class="checkbox" value="D" checked><label>Specie D</label> </br>
+            <input type="checkbox" class="checkbox" value="E" checked><label>Specie E</label> </br>
+            <input type="checkbox" class="checkbox" value="F" checked><label>Specie F</label> </br>
+            <input type="checkbox" class="checkbox" value="G" checked><label>Specie G</label> </br>
+        </div>
+    </div> -->
+    <div class="chart-frame container text-center " style="width:65%;">
         <p>Choose the type of your graph:</p>
-      <select id="select" class="browser-default custom-select w-100" onchange="changeFunc(value);">
-        <option value="bars">Bars</option>
-        <option value="donuts">Donuts</option>
-      </select>
-<!--        <div class="row align-items-start">-->
-<!--            <div class="col align-self-center">-->
-<!--                <div class="dropdown">-->
-<!--                    <button class="btn btn-secondary dropdown-toggle " type="button" id="chart-title"-->
-<!--                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;">-->
-<!--                        Bars-->
-<!--                    </button>-->
-<!--                    <div class="dropdown-menu form-mine align-self-right" id="listTypes"-->
-<!--                        aria-labelledby="navbarDropdown">-->
-<!--                        <button type="button" id="bars" class="dropdown-item">Bars</button>-->
-<!--                        <button type="button" id="donuts" class="dropdown-item">Donuts</button>-->
-<!--                        <div class="dropdown-divider"></div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
+        <select id="select" class="browser-default custom-select w-100" onchange="changeFunc(value);">
+            <option value="1">Turtle movement / Age</option>
+            <option value="2">Filiated Reseachers / Institutions</option>
+            <option value="3">Average Turtle Movement / Time</option>
+        </select>
+
         <div class="row align-items-center">
-            <div class="col align-items-center" id="chart" >
-                
+            <div class="col align-items-center" id="chart">
             </div>
         </div>
     </div>
-    <div id="my_dataviz"></div>
-    </div>
-    <script>
-        // $('.chart')[0].innerHTML = ("<%= j (render partial: 'chart') %>")
+</div>
+<script>
 
-        $(document).ready(function () {
-            $('#chart').html("<%=j(render :partial => 'chart/chart', :locals => {:analysis => 'analysis/2' , :chart_type => 'bars'} )%>");
-        });
-        function changeFunc($i) {
-                    if ($i== "bars") {
-                        $('#chart').html("<%=j(render :partial => 'chart/chart', :locals => {:analysis => 'analysis/2' , :chart_type => 'bars'} )%>");
-                        $('#chart-title').html(document.getElementById("bars").textContent);
-                    } else if ($i == "donuts") {
-                        $('#chart').html("<%=j(render :partial => 'chart/chart', :locals => {:analysis => 'analysis/2' , :chart_type => 'donuts'} )%>");
-                        $('#chart-title').html(document.getElementById("bars").textContent);
 
-                    }
+    $(document).ready(function () {
+        $('#chart').html("<%=j(render :partial => 'chart/chart', :locals => {:analysis => 'analysis/2' , :chart_type => 'bars'} )%>");
+    });
+    function changeFunc($i) {
+        $.ajax({
+            url: '/chart/analysis/'+$i,
+            type: 'GET',
+            data: {"type":"bars"},
+            success: function (data) {
+                $('#chart').html(data);
             }
-<!--            $('#bars').click(function () {-->
-<!--                $('#chart').html("<%=j(render :partial => 'chart/chart', :locals => {:analysis => 'analysis/2' , :chart_type => 'bars'} )%>");-->
-<!--                $('#chart-title').html(document.getElementById("bars").textContent);-->
-<!--            });-->
-<!--            $('#donuts').click(function () {-->
-
-<!--                $('#chart').html("<%=j(render :partial => 'chart/chart', :locals => {:analysis => 'analysis/2' , :chart_type => 'donuts'} )%>");-->
-<!--                $('#chart-title').html(document.getElementById("bars").textContent);-->
-
-<!--            });-->
+        });
+    }
+    changeFunc(3);
 
 
-
-    </script>
-</body>
-
-
-</html>
+</script>

@@ -3,11 +3,11 @@ import requests
 import json
 
 encoded_body = json.dumps({
-"turtle_id":1,
+"turtle_id":2,
 "temperature":24.2,
 "light":90.2,
 "depth":15.0,
-"latitude":-45.00000,
+"latitude":-0.00000,
 "longitude":-0.00000
     })
 
