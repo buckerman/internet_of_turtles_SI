@@ -1,5 +1,87 @@
-<h1>Search#index</h1>
-<p>Find me in app/views/search/index.html.erb</p>
-<%= @search_result%></br>
-<%= @filtered_users.to_json %></br>
-<%= @filtered_turtles.to_json %>
+
+  <h1 class="display-4 text-center"><b>Search Results</b></h1>
+  <p>The search for <%= @search_result%> resulted in <%= @filtered_users.length %> users. </p>
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Sex</th>
+      <th scope="col">Registration date</th>
+      <th scope="col">Description</th>
+      <th scope="col">Occupation</th>
+      <th scope="col">Institution</th>
+      <th scope="col">Turtles</th>
+      <th scope="col" colspan="1"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @filtered_users.each do |user| %>
+      <tr>
+        <th scope="row"><%= user.name %></th>
+        <td><%= user.email %></td>
+        <td><%= user.sex %></td>
+        <td><%= user.created_at %></td>
+        <td><%= user.description %></td>
+        <td><%= user.occupation %></td>
+        <td><%= user.institution %></td>
+        <td>
+          <select style="width: 100%">
+            <% @turtles.each do |turtle| %>
+              <% if turtle.user_id == user.id %>
+                <option value=<%= turtle.id %>><%= turtle.name %></option>
+              <% else %>
+              <% end %>
+            <% end %>
+          </select></td>
+        <td>
+          <%= link_to 'Show', user, class: "btn btn-info btn-sm " %>
+          <% if user == current_user || super_user %>|
+          <%= link_to 'Edit', edit_user_path(user), class: "btn btn-primary btn-sm " %> |
+          <%= link_to 'Destroy', user, class: "btn btn-danger btn-sm ", method: :delete, data: {confirm: 'Are you sure?'} %>
+          <% end %>
+        </td>
+      </tr>
+
+    <% end %>
+    </tbody>
+  </table>
+  <br/>
+  <br/>
+  <p>The search for <%= @search_result%> resulted in <%= @filtered_turtles.length %> turtles. </p>
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Sex</th>
+      <th scope="col">Species</th>
+      <th scope="col">Fixation date</th>
+      <th scope="col">Birthday</th>
+      <th scope="col">Researcher</th>
+      <th scope="col">Description</th>
+      <th scope="col" colspan="1"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @filtered_turtles.each do |turtle| %>
+      <tr>
+        <th scope="row"><%= turtle.name %></th>
+        <td><%= turtle.sex %></td>
+        <td><%= turtle.species %></td>
+        <td><%= turtle.fixation_date %></td>
+        <td><%= turtle.birthday %></td>
+        <td><%= turtle.user.name %></td>
+        <td><%= turtle.description %></td>
+        <td><%= link_to 'Show', turtle, class: "btn btn-info btn-sm " %>
+          <% if turtle.user == current_user || super_user %>
+            |
+            <%= link_to 'Edit', edit_turtle_path(turtle), class: "btn btn-primary btn-sm " %> |
+            <%= link_to 'Destroy', turtle, class: "btn btn-danger btn-sm ", method: :delete, data: {confirm: 'Are you sure?'} %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>

@@ -1,7 +1,7 @@
 # This file lives in the app/mailers directory
 # See http://guides.rubyonrails.org/action_mailer_basics.html for details
 
-class ContactMailer < ActionMailer::Base
+class ContactsMailer < ActionMailer::Base
     default from: "admin@example.com"
 
     

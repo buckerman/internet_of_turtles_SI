@@ -7,6 +7,7 @@ class SearchController < ApplicationController
 
     @filtered_turtles = Turtle.search(@search_result)
     @filtered_users = User.search(@search_result)
+    @turtles = Turtle.all
 
     render search_index_path
   end
