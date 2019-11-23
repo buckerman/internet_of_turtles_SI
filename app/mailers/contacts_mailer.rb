@@ -2,7 +2,7 @@
 # See http://guides.rubyonrails.org/action_mailer_basics.html for details
 
 class ContactsMailer < ActionMailer::Base
-    default from: "admin@example.com"
+    default from: "paloma.rocha@usp.br"
 
     
     def general_message(contact)

@@ -1,0 +1,42 @@
+<table class="table">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Sex</th>
+          <th scope="col">Registration date</th>
+          <th scope="col">Description</th>
+          <th scope="col">Occupation</th>
+          <th scope="col">Institution</th>
+          <th scope="col">Turtles</th>
+          <th scope="col" colspan="1">Actions</th>
+        </tr>
+        </thead>
+      
+        <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <th scope="row"><%= user.name %></th>
+            <td><%= user.email %></td>
+            <td><%= user.sex %></td>
+            <td><%= user.created_at %></td>
+            <td><%= user.description %></td>
+            <td><%= user.occupation %></td>
+            <td><%= user.institution %></td>
+            <td>
+              <select style="width: 100%">
+                <% user.turtles.each do |turtle| %>
+                    <option value=<%= turtle.id %>><%= turtle.name %></option>
+                <% end %>
+              </select></td>
+            <td><%= link_to 'Show', user, class: "btn btn-info btn-sm " %>
+                <% if super_user %> |
+              <%= link_to 'Edit', edit_user_path(user), class: "btn btn-primary btn-sm " %> |
+              <%= link_to 'Destroy', user, class: "btn btn-danger btn-sm ", method: :delete, data: {confirm: 'Are you sure?'} %>
+                <% end %>
+            </td>
+          </tr>
+      
+        <% end %>
+        </tbody>
+      </table>

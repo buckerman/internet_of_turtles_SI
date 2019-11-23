@@ -15,5 +15,13 @@ class User < ApplicationRecord
   # validates :image_url, allow_blank: true, format: {with: %r{\.( gif | jpg | png )\Z }i ,message: 'must be a URL for GIF , JPG or PNG image . '}
 
   has_many :turtles
+
+  def self.search(search)
+    if search.present?
+        User.where("name LIKE ? OR Institution LIKE ? OR email LIKE ?", "%#{search}%","%#{search}%", "%#{search}%")
+    else
+        User.all
+    end
+  end  
 end
 

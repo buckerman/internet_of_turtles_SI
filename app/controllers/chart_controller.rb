@@ -14,21 +14,46 @@ class ChartController < ApplicationController
     end
   end
 
+ 
   def analysis
+    @data = User.all.select(:id, :institution) 
+
     logger.info(params[:analysis_id])
     if params[:analysis_id] == '1'
-      @data = User.all.select(:id)
+      @type = 'bars'
+
     elsif params[:analysis_id] == '2'
-      @data = User.all.select(:id, :institution)
+      @type = 'dount'
+      
+    elsif params[:analysis_id] == '3'
+      @type = 'lines'
     else
-      @data = User.all.select(:id, :name)
+      @type = 'lines'
     end
     # @data = User.all.select(:id,:name)
     respond_to do |format|
 
-      # format.html # show.html.erb
-      format.json { render json: @data }
+      format.html { render partial: 'chart' }
 
     end
   end
+
+   # def analysis
+  #   logger.info(params[:analysis_id])
+  #   if params[:analysis_id] == '1'
+  #     @data = User.all.select(:id)
+  #   elsif params[:analysis_id] == '2'
+  #     @data = User.all.select(:id, :institution)
+  #   else
+  #     @data = User.all.select(:id, :name)
+  #   end
+  #   # @data = User.all.select(:id,:name)
+  #   respond_to do |format|
+
+  #     # format.html { render :test }
+  #     format.json { render json: @data }
+
+  #   end
+  # end
+
 end
