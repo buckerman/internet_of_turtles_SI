@@ -4,13 +4,13 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    if !super_user
-      redirect_to home_path
-    else
+    # if !super_user
+    #   redirect_to home_path
+    # else
       @users = User.all
       @turtles = Turtle.all
   
-    end
+    # end
   end
   # GET /users/1
   # GET /users/1.json

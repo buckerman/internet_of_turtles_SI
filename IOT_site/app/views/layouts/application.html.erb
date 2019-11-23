@@ -45,8 +45,7 @@
 </head>
 
 <body>
-<div id="page-container">
-  <div id="content-wrap">
+<%#= image_tag("fishUnderwater.jpg", :class => "bg", :style => "") %>
   <nav class="navbar navbar-expand-lg navbar-light bg-light ">
     <a class="navbar-brand" href=<%= home_path %>>I<i class="fas fa-globe-americas fa-xs"></i>T</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -121,12 +120,12 @@
   </nav>
 
 
-
+<div class="content">
   <%= yield %></br>
+</div>
 
-  </div>
   <!-- Footer -->
-  <footer class="page-footer font-small bg-light">
+  <footer class="page-footer font-small bg-light footer">
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© 2019 Copyright:
       <a class="text-info" href="http://www.lsi.usp.br/citi/"> Citi-USP</a>
@@ -145,7 +144,15 @@
       }
     }
   </script>
-</div>
+<script>
+    $(function(){
+        $('a').each(function(){
+            if ($(this).prop('href') == window.location.href) {
+                $(this).addClass('active'); $(this).parents('li').addClass('active');
+            }
+        });
+    });
+</script>
 </body>
 
 </html>

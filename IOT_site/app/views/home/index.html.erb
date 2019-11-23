@@ -2,8 +2,8 @@
 <h1 class="display-3 text-dark text-center">Internet <i class="fa fa-globe-americas fa-1x"></i>f Turtles </h1>
 <br/>
 <br/>
-<div class="text-dark">
-  <div class="card" style="width: 400px;float: left;margin: 10px 50px 0px 10px" >
+<div class="text-dark row justify-content-md-center">
+  <div class="card col-md-auto" style="width: 400px ;margin: 10px;">
     <%= image_tag("turtleMain.jpg", :class => "img-thumbnail", :style => "") %>
     <div class="card-body">
       <!--    <h5 class="card-title">Card title</h5>-->
@@ -36,16 +36,72 @@
       </div>
     </div>
   </div>
-  <div style="margin-right: 30px">
-    <p class="display-4 text-justify">
+  <div style="margin-right: 30px" class="col">
+    <br/>
+    <h2 class="text-justify ">
       Internet of Turtles – or IoT, as we call it – is a research project on Internet of Things and Swarm
-Intelligence aimed to track, monitor and thus contribute to the protection of endangered sea
-turtles all around the world. To do that our team is developing low-cost electronic modules
-capable of acquiring geolocation and forming decentralized communication networks.
-      <!-- Internet of Turtles is a successful project to track sea turtle species.
-      Using swarm concepts, turtles can share data with each other. This way we can get data from your location even if the turtle in question does not appear in the data collection base. -->
-      <!-- <br/>You can check in the left our achievements and by clicking on icon, you can view our data. -->
-      </p>
+      Intelligence aimed to track, monitor and thus contribute to the protection of endangered sea
+      turtles all around the world. <br/></h2>
+    <br/>
+    <div class="row justify-content-md-center">
+      <div class="col"><h2 class="text-justify">
+        To do that our team is developing low-cost electronic modules
+        capable of acquiring geolocation and forming decentralized communication networks.
+        <!-- Internet of Turtles is a successful project to track sea turtle species.
+        Using swarm concepts, turtles can share data with each other. This way we can get data from your location even if the turtle in question does not appear in the data collection base. -->
+        <!-- <br/>You can check in the left our achievements and by clicking on icon, you can view our data. -->
+      </h2></div>
+      <div class="col-md-auto">
+        <figure class="figure">
+          <%= image_tag("photos/Module_Virtual_Prototype.png", :class => "img-thumbnail", :style => "width:400px") %>
+          <figcaption><b>Module Virtual Prototype.</b></figcaption>
+        </figure>
+      </div>
+    </div>
   </div>
+</div>
+<br/>
+<br/>
+<h2>Our project history in images.</h2>
+<br/>
+<div class="row justify-content-md-center">
+
+  <br/>
+  <div class="col-md-auto">
+    <figure class="figure">
+      <%= image_tag("photos/Module_v_1.jpg", :class => "img-thumbnail", :style => "height: 300px") %>
+      <figcaption><b>Module v1.0.</b></figcaption>
+    </figure>
+  </div>
+  <div class="col-md-auto">
+    <figure class="figure">
+      <%= image_tag("photos/Module_with_base.jpg", :class => "img-thumbnail", :style => "height: 300px") %>
+      <figcaption><b>Module and base.</b></figcaption>
+    </figure>
+  </div>
+  <div class="col-md-auto">
+    <figure class="figure">
+      <%= image_tag("photos/Installing_the_module.jpg", :class => "img-thumbnail", :style => "height: 300px") %>
+      <figcaption><b>Installing the Module.</b></figcaption>
+    </figure>
+  </div>
+
+</div>
+<div class="row justify-content-md-center">
+
+  <br/>
+  <div class="col-md-auto">
+    <figure class="figure ht">
+      <%= image_tag("photos/Module_deployed.jpg", :class => "img-thumbnail", :style => "height: 300px") %>
+      <figcaption><b>Module deployed and ready to track!</b></figcaption>
+    </figure>
+  </div>
+  <div class="col-md-auto">
+    <figure class="figure">
+      <%= image_tag("photos/Ready_to_track.jpg", :class => "img-thumbnail", :style => "height: 300px") %>
+      <figcaption><b>Module deployed and ready to track!</b></figcaption>
+    </figure>
+  </div>
+
 
 </div>

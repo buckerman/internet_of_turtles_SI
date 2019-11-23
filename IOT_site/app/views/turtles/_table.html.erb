@@ -1,35 +1,35 @@
 <table class="table">
-        <thead class="thead-dark">
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Sex</th>
-          <th scope="col">Species</th>
-          <th scope="col">Fixation date</th>
-          <th scope="col">Birthday</th>
-          <th scope="col">Researcher</th>
-          <th scope="col">Description</th>
-          <th scope="col" colspan="1"></th>
-        </tr>
-        </thead>
-      
-        <tbody>
-        <% @turtles.each do |turtle| %>
-          <tr>
-            <th scope="row"><%= turtle.name %></th>
-            <td><%= turtle.sex %></td>
-            <td><%= turtle.species %></td>
-            <td><%= turtle.fixation_date %></td>
-            <td><%= turtle.birthday %></td>
-            <td><%= turtle.user.name %></td>
-            <td><%= turtle.description %></td>
-            <td><%= link_to 'Show', turtle, class: "btn btn-info btn-sm " %>
-              <% if turtle.user == current_user || super_user %>
-                |
-                <%= link_to 'Edit', edit_turtle_path(turtle), class: "btn btn-primary btn-sm " %> |
-                <%= link_to 'Destroy', turtle, class: "btn btn-danger btn-sm ", method: :delete, data: {confirm: 'Are you sure?'} %>
-              <% end %>
-            </td>
-          </tr>
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Sex</th>
+    <th scope="col">Species</th>
+    <th scope="col">Fixation date</th>
+    <th scope="col">Birthday</th>
+    <th scope="col">Researcher</th>
+    <th scope="col">Description</th>
+    <th scope="col" colspan="1">Actions</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @turtles.each do |turtle| %>
+    <tr>
+      <th scope="row"><%= turtle.name %></th>
+      <td><%= turtle.sex %></td>
+      <td><%= turtle.species %></td>
+      <td><%= turtle.fixation_date %></td>
+      <td><%= turtle.birthday %></td>
+      <td><%= turtle.user.name %></td>
+      <td><%= turtle.description %></td>
+      <td><%= link_to 'Show', turtle, class: "btn btn-info btn-sm " %>
+        <% if turtle.user == current_user || super_user %>
+          |
+          <%= link_to 'Edit', edit_turtle_path(turtle), class: "btn btn-primary btn-sm " %> |
+          <%= link_to 'Destroy', turtle, class: "btn btn-danger btn-sm ", method: :delete, data: {confirm: 'Are you sure?'} %>
         <% end %>
-        </tbody>
-      </table>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

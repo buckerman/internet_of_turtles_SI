@@ -1,15 +1,15 @@
 
-
   <h1 class="display-4 text-center"><b>Search Results</b></h1>
-  <p>The search for <%= @search_result%> resulted in <%= @users.length %> users and <%= @turtles.length %> turtles. </p>
+  <p>The search for <b><%= @search_result%></b> resulted in <%= @users.length %> users and <%= @turtles.length %> turtles. </p>
 
 <% if @users.length > 0  %>
-Users
+<h2> Users</h2>
 <%= render :partial => 'users/table' %>
 <%end%>
 
 <% if @turtles.length > 0 %>
-Turtles
+    <h2> Turtles</h2>
 <%= render :partial => 'turtles/table' %>
 <%end%>
+
 

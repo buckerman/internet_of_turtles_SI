@@ -4,11 +4,11 @@ class TurtleDataController < ApplicationController
   # GET /turtle_data
   # GET /turtle_data.json
   def index
-    if !super_user
-      redirect_to home_path
-    else
+    # if !super_user
+    #   redirect_to home_path
+    # else
       @turtle_data = TurtleDatum.all
-    end
+    # end
   end
 
   # GET /turtle_data/1
