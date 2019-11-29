@@ -1,0 +1,15 @@
+<h1 class="display-4 text-center">Turtles</h1>
+<br/>
+
+<%= render partial: 'table' %>
+<br>
+
+<% if current_user %>
+  <div class="form-mine">
+    <%= link_to 'New Turtle', new_turtle_path, class: "btn btn-success form-control" %>
+  </div>
+<% else %>
+  <!-- <script type="text/javascript">
+  window.location = "<%= home_path %>";
+</script> -->
+<% end %>

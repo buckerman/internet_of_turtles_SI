@@ -1,0 +1,121 @@
+/* ul.hmenu {
+    list-style: none;	
+    margin: 0 0 2em;
+    padding: 0;
+  }
+  
+  ul.hmenu li {
+    display: inline;  
+  } */
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+//@import "bootstrap-sprockets";
+//@import "bootstrap";
+@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css");
+
+body {
+  /* The image used */
+  //background-image: url("bg1.jpg");
+
+  /* Center and scale the image nicely */
+  //-webkit-background-size: cover;
+  //-moz-background-size: cover;
+  //background-size: cover;
+  //-o-background-size: cover;
+  font-family: "Helvetica Neue", Helvetica, Arial, Sans-Serif, serif;
+}
+
+body {
+  background: url(fishUnderwater.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+//html {
+//  background-image: url("bg1.jpg");
+//  background: no-repeat center center fixed;
+//  background-size: cover;
+//  height: 100%;
+//  overflow: hidden;
+//}
+//img.bg {
+//  /* Set rules to fill background */
+//  min-height: 100%;
+//  min-width: 100%;
+//
+//  /* Set up proportionate scaling */
+//  width: 100%;
+//  height: auto;
+//
+//  /* Set up positioning */
+//  position: fixed;
+//  top: 0;
+//  left: 0;
+//}
+
+.icon-mine img {
+  height: 10px;
+  margin-right: -8px;
+  margin-bottom: -6px;
+  vertical-align: text-bottom;
+}
+.table{
+  margin: 2px;
+}
+.table td {
+  text-align: center;
+}
+.table th{
+  text-align: center;
+}
+
+.form-mine {
+  margin: 0 10% 0 10%;
+  align: center;
+}
+.chart-frame {
+  margin: 0 20% 0 20%;
+  align: center;
+}
+.content{
+  margin: 5px;
+}
+
+html{ height:100%; }
+body{ min-height:100%; padding:0; margin:0; position:relative; }
+header{ height:50px;  }
+footer{  }
+
+/* Trick: */
+body {
+  position: relative;
+}
+
+body::after {
+  content: '';
+  display: block;
+  height: 50px; /* Set same as footer's height */
+
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+}
