@@ -21,11 +21,11 @@ class TurtleDataController < ApplicationController
 
   # GET /turtle_data/new
   def new
-    if !super_user
-      redirect_to home_path
-    else
-      @turtle_datum = TurtleDatum.new
-    end
+    # if !super_user
+    #   redirect_to home_path
+    # else
+    @turtle_datum = TurtleDatum.new
+    # end
   end
 
   # GET /turtle_data/1/edit
