@@ -72,7 +72,7 @@ Rails.application.configure do
       :user_name            => "plmbuba@gmail.com",
       :password             => "freiriabobao12#",
       :authentication       => "plain",
-      :enable_starttls_auto => true
+      :enable_starttls_auto => true 
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
