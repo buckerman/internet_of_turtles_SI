@@ -1,8 +1,11 @@
 <h1 class="display-4 text-center">Turtles Datum</h1>
+
 <br/>
 <table class="table">
   <thead class="thead-dark">
-  <th scope="col">Turtle</th>
+  <th scope="col">TurtleID</th>  
+  <th scope="col">Name</th>
+  <th scope="col">Data</th>
   <th scope="col">Temperature</th>
   <th scope="col">Light</th>
   <th scope="col">Depth</th>
@@ -16,6 +19,8 @@
   <% @turtle_data.each do |turtle_datum| %>
     <tr>
       <th scope="row"><%= turtle_datum.turtle_id %></th>
+      <td><%= turtle_datum.turtle.name  %></td>
+      <td><%= turtle_datum.created_at %></td>
       <td><%= turtle_datum.temperature %></td>
       <td><%= turtle_datum.light %></td>
       <td><%= turtle_datum.depth %></td>
@@ -36,5 +41,7 @@
 <br/>
 
 <div class="form-mine">
+  <% if super_user %>
   <%= link_to 'New Turtle Datum', new_turtle_datum_path, class: "btn btn-success form-control" %>
+  <% end %>
 </div>

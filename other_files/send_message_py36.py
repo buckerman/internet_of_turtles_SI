@@ -7,8 +7,8 @@ encoded_body = json.dumps({
 "temperature":24.2,
 "light":90.2,
 "depth":15.0,
-"latitude":-0.00000,
-"longitude":-0.00000
+"latitude":-20.00000,
+"longitude":-50.00000
     })
 login_data = json.dumps({
 "email":"arthur.bucker@usp.br",
@@ -25,3 +25,4 @@ print(response.status)
 #print(response.data.decode('utf-8'))
 print("-------headers--------")
 print(response.headers)
+
