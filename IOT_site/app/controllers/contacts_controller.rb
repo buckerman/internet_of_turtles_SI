@@ -1,6 +1,7 @@
 class ContactsController < ApplicationController
 
   before_action :check_permition, only: [:show, :index, :update, :destroy]
+  before_action :set_contact, only: [:show, :edit, :update, :destroy]
   def index
     @contacts = Contact.all
   end
@@ -23,12 +24,17 @@ class ContactsController < ApplicationController
     end
   end
 
+  def show
+  end
   private
 
   def check_permition
     if !super_user
       redirect_to home_path
     end
+  end
+  def set_contact
+    @contact = Contact.find(params[:id])
   end
   def contacts_params
     params.require(:contact).permit(:username, :name, :email, :message)

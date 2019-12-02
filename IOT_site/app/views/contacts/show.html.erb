@@ -1,3 +1,21 @@
 <p id="notice"><%= notice %></p>
+<div class="form-mine">
+        <h1 class="display-4 text-center"><b>Message</b></h1>
+        <%= @contact.created_at %>
+        <br/>        
+        <br/>
+        From: <%= @contact.name %>
+        <br/>
+        Email: <%= @contact.email %>
+        <br/>        
+        <br/>        
+        Message:
+        <br/>
+        <%= @contact.message %>
+          
+        <br/>
+      </div>
+
+
 
 <%= link_to 'Back', contacts_path %>

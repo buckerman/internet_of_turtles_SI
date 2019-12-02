@@ -1,5 +1,5 @@
 <div class="form-mine">
-  <% if current_user == @user || super_user %>
+
     <h1 class="display-4 text-center"><b>Update Profile</b></h1>
 
     <%= render 'form', user: @user %>
@@ -10,11 +10,6 @@
       <br/>
       <%= link_to 'Show users', users_path, class: "btn btn-light form-control" %>
     </div>
-  <% else %>
-    <script type="text/javascript">
-        window.location = "<%= user_path(@user) %>";
-    </script>
-
-  <% end %>
+  
 
 </div>
