@@ -1,21 +1,6 @@
 <div id="content" class="hist form-mine w-100" style="width:100%; margin:0px"></div>
-<%= @type %>
-test
-<!-- '<%= @data %>' -->
-<script>
 
-    // $.ajax({
-    //     type: "POST",
-    //     contentType: "application/json; charset=utf-8",
-    //     url: '/chart/<%= local_assigns[:analysis]%>',
-    //     dataType: 'json',
-    //     async: true,
-    //     data: "{}",
-    //     success: function (data) {
-    //         var raw_data = data
-    //         which_chart(data);
-    //     }
-    // });
+<script>
 
     var raw_data = <%= @data.to_json.html_safe %>;
     console.log(raw_data);
@@ -31,6 +16,20 @@ test
         }
 
         draw_histogram(div_name, chart_data);
+        <% elsif @type == 'dount2' %>
+
+            var chart_data = {};
+        for (var i = 0; i < raw_data.length; i++) {
+            console.log(raw_data[i]);
+            if (raw_data[i]["institution"] in chart_data) {
+                chart_data[raw_data[i]["species"]] += 1;
+            } else {
+                chart_data[raw_data[i]["species"]] = 1;
+
+            }
+        }
+        console.log(chart_data);
+        draw_donut(div_name, chart_data);
         <% elsif @type == 'dount' %>
 
             var chart_data = {};
@@ -312,8 +311,8 @@ test
                     .datum(data)
                     .attr("class", "line")  // I add the class line to be able to modify this line later on.
                     .attr("fill", "none")
-                    .attr("stroke", "steelblue")
-                    .attr("stroke-width", 1.5)
+                    .attr("stroke", "black")
+                    .attr("stroke-width", 2.0)
                     .attr("d", d3.line()
                         .x(function (d) { return x(d.date) })
                         .y(function (d) { return y(d.value) })

@@ -16,17 +16,21 @@ class ChartController < ApplicationController
 
  
   def analysis
-    @data = User.all.select(:id, :institution) 
-
+    @data = User.all.select(:id,:institution) 
+    
     logger.info(params[:analysis_id])
     if params[:analysis_id] == '1'
       @type = 'bars'
 
     elsif params[:analysis_id] == '2'
       @type = 'dount'
+
       
     elsif params[:analysis_id] == '3'
       @type = 'lines'
+    elsif params[:analysis_id] == '4'
+      @data = Turtle.all.select(:id,:species,:institution)
+      @type = 'dount2'
     else
       @type = 'lines'
     end
