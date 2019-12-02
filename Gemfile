@@ -64,3 +64,4 @@ gem 'gmaps4rails'
 gem 'coffee-rails'
 
 gem "figaro"
+gem "pg"
