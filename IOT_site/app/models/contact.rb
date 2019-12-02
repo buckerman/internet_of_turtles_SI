@@ -7,5 +7,6 @@ class Contact < ActiveRecord::Base
         :message => "must be a valid email address"
       }
     validates :message, :presence => :true
+    validates :name, :presence => :true
   
   end

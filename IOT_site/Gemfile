@@ -63,4 +63,4 @@ gem 'devise'
 gem 'gmaps4rails'
 gem 'coffee-rails'
 
-gem 'pg', group: :production
+gem "figaro"

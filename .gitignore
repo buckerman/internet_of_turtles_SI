@@ -35,4 +35,5 @@ yarn-debug.log*
 .yarn-integrity
 
 
-IOT_site/config/environments/
+# Ignore application configuration
+IOT_site/config/application.yml

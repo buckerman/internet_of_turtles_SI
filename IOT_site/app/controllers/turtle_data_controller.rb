@@ -1,6 +1,8 @@
 class TurtleDataController < ApplicationController
   before_action :set_turtle_datum, only: [:show, :edit, :update, :destroy]
   protect_from_forgery with: :null_session
+  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
   # GET /turtle_data
   # GET /turtle_data.json
   def index
@@ -24,6 +26,7 @@ class TurtleDataController < ApplicationController
     # if !super_user
     #   redirect_to home_path
     # else
+    puts "------------received--------------"
     @turtle_datum = TurtleDatum.new
     # end
   end
@@ -38,9 +41,9 @@ class TurtleDataController < ApplicationController
   # POST /turtle_data
   # POST /turtle_data.json
   def create
-    if !super_user
-      redirect_to home_path
-    else
+    # if !super_user
+    #   redirect_to home_path
+    # else
       @turtle_datum = TurtleDatum.new(turtle_datum_params)
 
       respond_to do |format|
@@ -52,7 +55,7 @@ class TurtleDataController < ApplicationController
           format.json { render json: @turtle_datum.errors, status: :unprocessable_entity }
         end
       end
-    end
+    # end
   end
 
   # PATCH/PUT /turtle_data/1
