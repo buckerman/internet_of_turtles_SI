@@ -3,11 +3,11 @@ import requests
 import json
 
 encoded_body = json.dumps({
-"turtle_id":1,
+"turtle_id":2,
 "temperature":24.2,
 "light":90.2,
 "depth":15.0,
-"latitude":-20.00000,
+"latitude":-19.00000,
 "longitude":-50.00000
     })
 login_data = json.dumps({
@@ -17,7 +17,7 @@ login_data = json.dumps({
 
 http = urllib3.PoolManager()
 # https://internet-of-turtles.herokuapp.com/turtle_data
-response = http.request("POST", "http://localhost:3000/turtle_data",
+response = http.request("POST", "https://internet-of-turtles.herokuapp.com/turtle_data",
                  headers={'Content-Type': 'application/json'},
                  body=encoded_body)
 print(response.status)

@@ -15,7 +15,7 @@ class User < ApplicationRecord
   validates :occupation, presence: true
   validates :institution, presence: true
 
-  has_many :turtles
+  has_many :turtles, dependent: :destroy
 
   def self.search(search)
     if search.present?

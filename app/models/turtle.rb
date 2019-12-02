@@ -4,7 +4,7 @@ class Turtle < ApplicationRecord
     validates :species, presence: true
 
     belongs_to :user
-    has_many :turtle_data
+    has_many :turtle_data, dependent: :destroy
 
     def self.search(search)
         if search.present?

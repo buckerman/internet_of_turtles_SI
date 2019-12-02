@@ -89,8 +89,7 @@ class TurtlesController < ApplicationController
   end
 
   def turtle_info
-    puts "test"
-    puts params[:id]
+
     @turtle = Turtle.all.find(params[:id])
     respond_to do |format|
       # format.html { redirect_to @turtle, notice: 'Turtle was successfully created.' }

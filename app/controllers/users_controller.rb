@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :check_permition, only: [ :destroy]
   # GET /users
   # GET /users.json
   def index
@@ -24,10 +25,9 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    if !current_user
+    if current_user != @user && !super_user
       redirect_to @user
     end
-    
   end
 
   # POST /users
@@ -66,15 +66,13 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    if !super_user
-      redirect_to home_path
-    else
+
       @user.destroy
       respond_to do |format|
         format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
         format.json { head :no_content }
       end
-    end
+
   end
 
   private
@@ -82,6 +80,12 @@ class UsersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
+  end
+  def check_permition
+    
+    if !super_user
+      redirect_to home_path
+    end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
